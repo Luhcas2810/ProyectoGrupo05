@@ -29,7 +29,10 @@ namespace SIPSProyecto.Models
         public string usu_vcEmail { get; set; }
         public string usu_vcPassword { get; set; }
         public string usu_vcTipo { get; set; }
-    
+        public string confirmarContrasenia { get; set; }
+        public int Escuela { get; set; }
+        public int Empresa { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Administrador> Administrador { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
