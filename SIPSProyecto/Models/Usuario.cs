@@ -26,8 +26,8 @@ namespace SIPSProyecto.Models
         public int usu_iCodigo { get; set; }
         public string usu_vcNombres { get; set; }
         public string usu_vcApellidos { get; set; }
-        public string usu_vcEmail { get; set; }
-        public string usu_vcPassword { get; set; }
+        public string usu_vcCorreo { get; set; }
+        public string usu_vcContrasena { get; set; }
         public string usu_vcTipo { get; set; }
         public string confirmarContrasenia { get; set; }
         public int Escuela { get; set; }

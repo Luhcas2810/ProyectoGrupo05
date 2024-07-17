@@ -17,22 +17,20 @@ namespace SIPSProyecto.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Convenio()
         {
-            this.Estudiante = new HashSet<Estudiante>();
             this.Progreso = new HashSet<Progreso>();
         }
     
         public int con_iCodigo { get; set; }
+        public Nullable<int> est_iCodigo { get; set; }
         public Nullable<int> cpr_iCodigo { get; set; }
         public Nullable<int> emp_iCodigo { get; set; }
         public Nullable<System.DateTime> con_dtFechaInicio { get; set; }
         public Nullable<System.DateTime> con_dtFechaFin { get; set; }
-        public string con_vcDescripcionActividades { get; set; }
         public string con_vcPuesto { get; set; }
     
         public virtual CoordinadorPracticas CoordinadorPracticas { get; set; }
         public virtual Empresa Empresa { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Estudiante> Estudiante { get; set; }
+        public virtual Estudiante Estudiante { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Progreso> Progreso { get; set; }
     }

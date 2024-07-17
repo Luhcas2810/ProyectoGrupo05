@@ -16,9 +16,11 @@ namespace SIPSProyecto.Models
     {
         public int inp_iCodigo { get; set; }
         public Nullable<int> cpr_iCodigo { get; set; }
+        public Nullable<int> est_iCodigo { get; set; }
         public string inp_vcContenido { get; set; }
         public Nullable<System.DateTime> inp_dtFechaEnvio { get; set; }
     
         public virtual CoordinadorPracticas CoordinadorPracticas { get; set; }
+        public virtual Estudiante Estudiante { get; set; }
     }
 }

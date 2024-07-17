@@ -88,7 +88,7 @@ namespace SIPSProyecto.Controllers
 
                     ViewBag.Empresas = new SelectList(empresas, "emp_iCodigo", "emp_vcNombre");
                     ViewBag.Escuelas = new SelectList(escuelas, "esc_iCodigo", "esc_vcNombre");
-                    if (usuario.usu_vcPassword == confirmar)
+                    if (usuario.usu_vcContrasena == confirmar)
                     {
                         if (usuario.usu_vcTipo == "Administrador")
                         {
@@ -114,10 +114,9 @@ namespace SIPSProyecto.Controllers
                             Estudiante estudiante = new Estudiante();
                             estudiante.usu_iCodigo = usuario.usu_iCodigo;
                             estudiante.esc_iCodigo = usuario.Escuela;
-                            estudiante.est_vcCorreo = usuario.usu_vcEmail;
                             context.Estudiante.Add(estudiante);
                         }
-                        usuario.usu_vcPassword = ConvertirContrasenia(usuario.usu_vcPassword);
+                        usuario.usu_vcContrasena = ConvertirContrasenia(usuario.usu_vcContrasena);
                         context.Usuario.Add(usuario);
                         context.SaveChanges();
                     }
@@ -125,7 +124,7 @@ namespace SIPSProyecto.Controllers
                     {
                         Usuario usuario2 = new Usuario
                         {
-                            usu_vcEmail = usuario.usu_vcEmail,
+                            usu_vcCorreo = usuario.usu_vcCorreo,
                             usu_vcNombres = usuario.usu_vcNombres,
                             usu_vcApellidos = usuario.usu_vcApellidos
                         };
@@ -173,7 +172,7 @@ namespace SIPSProyecto.Controllers
                     {
                         usuario.usu_vcNombres = collection["nombres"];
                         usuario.usu_vcApellidos = collection["apellidos"];
-                        usuario.usu_vcEmail = collection["correo"];
+                        usuario.usu_vcCorreo = collection["correo"];
 
                         // Marcar la entidad como modificada
                         context.Entry(usuario).State = EntityState.Modified;
@@ -245,7 +244,7 @@ namespace SIPSProyecto.Controllers
                     }
                     if (!string.IsNullOrWhiteSpace(correo_usu))
                     {
-                        query = query.Where(f => f.usu_vcEmail.Contains(correo_usu));
+                        query = query.Where(f => f.usu_vcCorreo.Contains(correo_usu));
                     }
                     if (!string.IsNullOrWhiteSpace(tipo_usu))
                     {

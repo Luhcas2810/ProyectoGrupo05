@@ -16,7 +16,7 @@ namespace SIPSProyecto.Models
     public partial class DBModels : DbContext
     {
         public DBModels()
-            : base("name=DBModels")
+            : base("name=SIPSProyectoEntities")
         {
         }
     
@@ -27,9 +27,11 @@ namespace SIPSProyecto.Models
     
         public virtual DbSet<Administrador> Administrador { get; set; }
         public virtual DbSet<AsistenteEmpresa> AsistenteEmpresa { get; set; }
-        public virtual DbSet<Calificacion> Calificacion { get; set; }
+        public virtual DbSet<Competencia> Competencia { get; set; }
+        public virtual DbSet<ContribucionEquipo> ContribucionEquipo { get; set; }
         public virtual DbSet<Convenio> Convenio { get; set; }
         public virtual DbSet<CoordinadorPracticas> CoordinadorPracticas { get; set; }
+        public virtual DbSet<Desafio> Desafio { get; set; }
         public virtual DbSet<Empresa> Empresa { get; set; }
         public virtual DbSet<Escuela> Escuela { get; set; }
         public virtual DbSet<Estudiante> Estudiante { get; set; }
@@ -37,6 +39,8 @@ namespace SIPSProyecto.Models
         public virtual DbSet<Incidencia> Incidencia { get; set; }
         public virtual DbSet<InformeDesempeno> InformeDesempeno { get; set; }
         public virtual DbSet<InformePractica> InformePractica { get; set; }
+        public virtual DbSet<Logro> Logro { get; set; }
+        public virtual DbSet<Objetivo> Objetivo { get; set; }
         public virtual DbSet<Progreso> Progreso { get; set; }
         public virtual DbSet<Tarea> Tarea { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }

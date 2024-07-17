@@ -14,12 +14,19 @@ namespace SIPSProyecto.Models
     
     public partial class Progreso
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Progreso()
+        {
+            this.Evaluacion = new HashSet<Evaluacion>();
+        }
+    
         public int pro_iCodigo { get; set; }
         public Nullable<int> con_iCodigo { get; set; }
-        public Nullable<int> eva_iCodigo { get; set; }
         public string pro_vcDetalles { get; set; }
         public Nullable<System.DateTime> pro_dtFechaActualizacion { get; set; }
     
         public virtual Convenio Convenio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Evaluacion> Evaluacion { get; set; }
     }
 }

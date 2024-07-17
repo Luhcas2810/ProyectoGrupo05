@@ -4,38 +4,49 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7581a7c95cc8458491df5143e25c3a67" Name="Diagram1">
-        <EntityTypeShape EntityType="DbModel.Administrador" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.AsistenteEmpresa" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Calificacion" Width="1.5" PointX="7.5" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Convenio" Width="1.5" PointX="5.25" PointY="15.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.CoordinadorPracticas" Width="1.5" PointX="3" PointY="16.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Empresa" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Escuela" Width="1.5" PointX="5.25" PointY="12.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Estudiante" Width="1.5" PointX="7.5" PointY="12.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Evaluacion" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Incidencia" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.InformeDesempeno" Width="1.5" PointX="5.25" PointY="19.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.InformePractica" Width="1.5" PointX="5.25" PointY="22" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Progreso" Width="1.5" PointX="7.5" PointY="19.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Tarea" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbModel.Usuario" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
-        <AssociationConnector Association="DbModel.FK_Administrador_Usuario" ManuallyRouted="false" />
-        <AssociationConnector Association="DbModel.FK_Incidencia_Administrador" ManuallyRouted="false" />
-        <AssociationConnector Association="DbModel.FK_AsistenteEmpresa_Empresa" ManuallyRouted="false" />
-        <AssociationConnector Association="DbModel.FK_AsistenteEmpresa_Usuario" ManuallyRouted="false" />
-        <AssociationConnector Association="DbModel.FK_Evaluacion_AsistenteEmpresa" ManuallyRouted="false" />
-        <AssociationConnector Association="DbModel.FK_Calificacion_Evaluacion" ManuallyRouted="false" />
-        <AssociationConnector Association="DbModel.FK_Convenio_CoordinadorPracticas" ManuallyRouted="false" />
-        <AssociationConnector Association="DbModel.FK_Convenio_Empresa" ManuallyRouted="false" />
-        <AssociationConnector Association="DbModel.FK_Estudiante_Convenio" ManuallyRouted="false" />
-        <AssociationConnector Association="DbModel.FK_Progreso_Convenio" ManuallyRouted="false" />
-        <AssociationConnector Association="DbModel.FK_CoordinadorPracticas_Usuario" ManuallyRouted="false" />
-        <AssociationConnector Association="DbModel.FK_InformeDesempeno_CoordinadorPracticas" ManuallyRouted="false" />
-        <AssociationConnector Association="DbModel.FK_InformePractica_CoordinadorPracticas" ManuallyRouted="false" />
-        <AssociationConnector Association="DbModel.FK_Estudiante_Escuela" ManuallyRouted="false" />
-        <AssociationConnector Association="DbModel.FK_Estudiante_Usuario" ManuallyRouted="false" />
-        <AssociationConnector Association="DbModel.FK_Tarea_Evaluacion" ManuallyRouted="false" />
+      <Diagram DiagramId="c57d050ff0ba49d9ac486edac3ea04fe" Name="Diagram1">
+        <EntityTypeShape EntityType="DBModels.Administrador" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModels.AsistenteEmpresa" Width="1.5" PointX="6" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModels.Competencia" Width="1.5" PointX="10.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModels.ContribucionEquipo" Width="1.5" PointX="10.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModels.Convenio" Width="1.5" PointX="5.25" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModels.CoordinadorPracticas" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModels.Desafio" Width="1.5" PointX="10.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModels.Empresa" Width="1.5" PointX="3.75" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModels.Escuela" Width="1.5" PointX="5.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModels.Estudiante" Width="1.5" PointX="8" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModels.Evaluacion" Width="1.5" PointX="10.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModels.Incidencia" Width="1.5" PointX="5.25" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModels.InformeDesempeno" Width="1.5" PointX="8.25" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModels.InformePractica" Width="1.5" PointX="8.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModels.Logro" Width="1.5" PointX="10.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModels.Objetivo" Width="1.5" PointX="10.25" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModels.Progreso" Width="1.5" PointX="7.5" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModels.Tarea" Width="1.5" PointX="10.25" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModels.Usuario" Width="1.5" PointX="0.75" PointY="16" IsExpanded="true" />
+        <AssociationConnector Association="DBModels.FK_Administrador_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_Incidencia_Administrador" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_AsistenteEmpresa_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_AsistenteEmpresa_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_Evaluacion_AsistenteEmpresa" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_Competencia_Estudiante" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_ContribucionEquipo_Estudiante" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_Convenio_CoordinadorPracticas" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_Convenio_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_Estudiante_Convenio" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_Progreso_Convenio" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_CoordinadorPracticas_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_InformeDesempeno_CoordinadorPracticas" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_InformePractica_CoordinadorPracticas" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_Desafio_Estudiante" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_Estudiante_Escuela" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_Estudiante_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_InformeDesempeno_Estudiante" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_InformePractica_Estudiante" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_Logro_Estudiante" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_Objetivo_Estudiante" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_Tarea_Estudiante" ManuallyRouted="false" />
+        <AssociationConnector Association="DBModels.FK_Evaluacion_Progreso" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

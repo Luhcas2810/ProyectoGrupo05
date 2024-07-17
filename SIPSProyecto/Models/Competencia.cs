@@ -12,15 +12,12 @@ namespace SIPSProyecto.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class InformeDesempeno
+    public partial class Competencia
     {
-        public int ind_iCodigo { get; set; }
-        public Nullable<int> cpr_iCodigo { get; set; }
+        public int com_iCodigo { get; set; }
         public Nullable<int> est_iCodigo { get; set; }
-        public string ind_vcContenido { get; set; }
-        public Nullable<System.DateTime> ind_dtFechaRevision { get; set; }
+        public string com_vcDescripcion { get; set; }
     
-        public virtual CoordinadorPracticas CoordinadorPracticas { get; set; }
         public virtual Estudiante Estudiante { get; set; }
     }
 }

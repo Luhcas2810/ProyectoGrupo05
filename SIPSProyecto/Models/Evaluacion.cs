@@ -14,21 +14,12 @@ namespace SIPSProyecto.Models
     
     public partial class Evaluacion
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Evaluacion()
-        {
-            this.Calificacion = new HashSet<Calificacion>();
-            this.Tarea = new HashSet<Tarea>();
-        }
-    
         public int eva_iCodigo { get; set; }
         public Nullable<int> ase_iCodigo { get; set; }
+        public Nullable<int> pro_iCodigo { get; set; }
         public string eva_vcDescripcion { get; set; }
     
         public virtual AsistenteEmpresa AsistenteEmpresa { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Calificacion> Calificacion { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tarea> Tarea { get; set; }
+        public virtual Progreso Progreso { get; set; }
     }
 }

@@ -12,12 +12,12 @@ namespace SIPSProyecto.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Calificacion
+    public partial class Desafio
     {
-        public int cal_iCodigo { get; set; }
-        public Nullable<int> eva_iCodigo { get; set; }
-        public Nullable<int> cal_iNota { get; set; }
+        public int des_id { get; set; }
+        public Nullable<int> est_iCodigo { get; set; }
+        public string des_vcDescripcion { get; set; }
     
-        public virtual Evaluacion Evaluacion { get; set; }
+        public virtual Estudiante Estudiante { get; set; }
     }
 }

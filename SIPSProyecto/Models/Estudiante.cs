@@ -14,15 +14,44 @@ namespace SIPSProyecto.Models
     
     public partial class Estudiante
     {
-        public int est_iCodigo { get; set; }
-        public Nullable<int> con_iCodigo { get; set; }
-        public Nullable<int> usu_iCodigo { get; set; }
-        public string est_vcCodigo { get; set; }
-        public string est_vcCorreo { get; set; }
-        public Nullable<int> esc_iCodigo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Estudiante()
+        {
+            this.Competencia = new HashSet<Competencia>();
+            this.ContribucionEquipo = new HashSet<ContribucionEquipo>();
+            this.Convenio = new HashSet<Convenio>();
+            this.Desafio = new HashSet<Desafio>();
+            this.InformeDesempeno = new HashSet<InformeDesempeno>();
+            this.InformePractica = new HashSet<InformePractica>();
+            this.Logro = new HashSet<Logro>();
+            this.Objetivo = new HashSet<Objetivo>();
+            this.Tarea = new HashSet<Tarea>();
+        }
     
-        public virtual Convenio Convenio { get; set; }
+        public int est_iCodigo { get; set; }
+        public Nullable<int> usu_iCodigo { get; set; }
+        public Nullable<int> esc_iCodigo { get; set; }
+        public string est_vcCodigo { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Competencia> Competencia { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ContribucionEquipo> ContribucionEquipo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Convenio> Convenio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Desafio> Desafio { get; set; }
         public virtual Escuela Escuela { get; set; }
         public virtual Usuario Usuario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InformeDesempeno> InformeDesempeno { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InformePractica> InformePractica { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Logro> Logro { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Objetivo> Objetivo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tarea> Tarea { get; set; }
     }
 }

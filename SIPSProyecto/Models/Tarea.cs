@@ -15,10 +15,10 @@ namespace SIPSProyecto.Models
     public partial class Tarea
     {
         public int tar_iCodigo { get; set; }
-        public Nullable<int> eva_iCodigo { get; set; }
+        public Nullable<int> est_iCodigo { get; set; }
         public string tar_vcDescripcion { get; set; }
-        public Nullable<int> tar_iNotaObtenida { get; set; }
+        public string tar_vcNotaObtenida { get; set; }
     
-        public virtual Evaluacion Evaluacion { get; set; }
+        public virtual Estudiante Estudiante { get; set; }
     }
 }

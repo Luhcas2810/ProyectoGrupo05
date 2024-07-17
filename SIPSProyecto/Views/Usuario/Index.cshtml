@@ -5,7 +5,7 @@
 }
 
 <head>
-    <link href="~/Content/indexAdminStyles.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Content/indexAdminStyles.css">
 </head>
 
 <h2>Usuarios del Sistema</h2>
@@ -23,10 +23,10 @@
 @using (Html.BeginForm("Search", "Usuario"))
 {
     <div class="form-group">
-        @Html.TextBox("nombres_usu", null, new { @class = "TextBox", @placeholder = "Ingrese nombre de usuario" })
-        @Html.TextBox("apellidos_usu", null, new { @class = "TextBox", @placeholder = "Ingrese apellido de usuario" })
-        @Html.TextBox("correo_usu", null, new { @class = "TextBox", @placeholder = "Ingrese correo de usuario" })
-        @Html.TextBox("tipo_usu", null, new { @class = "TextBox", @placeholder = "Ingrese tipo de usuario" })
+        @Html.TextBox("nombres_usu", null, new { @class = "TextBox", @placeholder = "Ingrese nombre de estudiante" })
+        @Html.TextBox("apellidos_usu", null, new { @class = "TextBox", @placeholder = "Ingrese apellido de estudiante" })
+        @Html.TextBox("correo_usu", null, new { @class = "TextBox", @placeholder = "Ingrese codigo de estudiante" })
+        @Html.TextBox("tipo_usu", null, new { @class = "TextBox", @placeholder = "Ingrese codigo de estudiante" })
         <button type="submit"></button>
         @*<button class="btn btn-primary" onclick="mostrar()"></button>*@
     </div>
@@ -59,7 +59,7 @@
                 @Html.DisplayFor(modelItem => item.usu_vcApellidos)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.usu_vcEmail)
+                @Html.DisplayFor(modelItem => item.usu_vcCorreo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.usu_vcTipo)

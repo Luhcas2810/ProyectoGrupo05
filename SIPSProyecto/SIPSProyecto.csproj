@@ -139,7 +139,10 @@
     <Compile Include="Models\AsistenteEmpresa.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Calificacion.cs">
+    <Compile Include="Models\Competencia.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ContribucionEquipo.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Convenio.cs">
@@ -163,6 +166,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBModels.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Desafio.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Empresa.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
@@ -182,6 +188,12 @@
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\InformePractica.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Logro.cs">
+      <DependentUpon>DBModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Objetivo.cs">
       <DependentUpon>DBModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Progreso.cs">
@@ -209,8 +221,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Models\DBModels.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DBModels.Context.cs</LastGenOutput>
       <DependentUpon>DBModels.edmx</DependentUpon>
+      <LastGenOutput>DBModels.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\DBModels.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
