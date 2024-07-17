@@ -1,0 +1,1031 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Administrador">
+          <Key>
+            <PropertyRef Name="adm_iCodigo" />
+          </Key>
+          <Property Name="adm_iCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usu_iCodigo" Type="int" />
+        </EntityType>
+        <EntityType Name="AsistenteEmpresa">
+          <Key>
+            <PropertyRef Name="ase_iCodigo" />
+          </Key>
+          <Property Name="ase_iCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usu_iCodigo" Type="int" />
+          <Property Name="emp_iCodigo" Type="int" />
+        </EntityType>
+        <EntityType Name="Calificacion">
+          <Key>
+            <PropertyRef Name="cal_iCodigo" />
+          </Key>
+          <Property Name="cal_iCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="eva_iCodigo" Type="int" />
+          <Property Name="cal_iNota" Type="int" />
+        </EntityType>
+        <EntityType Name="Convenio">
+          <Key>
+            <PropertyRef Name="con_iCodigo" />
+          </Key>
+          <Property Name="con_iCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cpr_iCodigo" Type="int" />
+          <Property Name="emp_iCodigo" Type="int" />
+          <Property Name="con_dtFechaInicio" Type="date" />
+          <Property Name="con_dtFechaFin" Type="date" />
+          <Property Name="con_vcDescripcionActividades" Type="varchar" MaxLength="100" />
+          <Property Name="con_vcPuesto" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="CoordinadorPracticas">
+          <Key>
+            <PropertyRef Name="cpr_iCodigo" />
+          </Key>
+          <Property Name="cpr_iCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usu_iCodigo" Type="int" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="emp_iCodigo" />
+          </Key>
+          <Property Name="emp_iCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emp_vcNombre" Type="varchar" MaxLength="50" />
+          <Property Name="emp_vcDireccion" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Escuela">
+          <Key>
+            <PropertyRef Name="esc_iCodigo" />
+          </Key>
+          <Property Name="esc_iCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="esc_vcNombre" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Estudiante">
+          <Key>
+            <PropertyRef Name="est_iCodigo" />
+          </Key>
+          <Property Name="est_iCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="con_iCodigo" Type="int" />
+          <Property Name="usu_iCodigo" Type="int" />
+          <Property Name="est_vcCodigo" Type="varchar" MaxLength="45" />
+          <Property Name="est_vcCorreo" Type="varchar" MaxLength="45" />
+          <Property Name="esc_iCodigo" Type="int" />
+        </EntityType>
+        <EntityType Name="Evaluacion">
+          <Key>
+            <PropertyRef Name="eva_iCodigo" />
+          </Key>
+          <Property Name="eva_iCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ase_iCodigo" Type="int" />
+          <Property Name="eva_vcDescripcion" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Incidencia">
+          <Key>
+            <PropertyRef Name="inc_iCodigo" />
+          </Key>
+          <Property Name="inc_iCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adm_iCodigo" Type="int" />
+          <Property Name="inc_txDescripcion" Type="text" />
+        </EntityType>
+        <EntityType Name="InformeDesempeno">
+          <Key>
+            <PropertyRef Name="ind_iCodigo" />
+          </Key>
+          <Property Name="ind_iCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cpr_iCodigo" Type="int" />
+          <Property Name="ind_vcContenido" Type="varchar" MaxLength="100" />
+          <Property Name="ind_dtFechaRevision" Type="date" />
+        </EntityType>
+        <EntityType Name="InformePractica">
+          <Key>
+            <PropertyRef Name="inp_iCodigo" />
+          </Key>
+          <Property Name="inp_iCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cpr_iCodigo" Type="int" />
+          <Property Name="inp_vcContenido" Type="varchar" MaxLength="100" />
+          <Property Name="inp_dtFechaEnvio" Type="date" />
+        </EntityType>
+        <EntityType Name="Progreso">
+          <Key>
+            <PropertyRef Name="pro_iCodigo" />
+          </Key>
+          <Property Name="pro_iCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="con_iCodigo" Type="int" />
+          <Property Name="eva_iCodigo" Type="int" />
+          <Property Name="pro_vcDetalles" Type="varchar" MaxLength="100" />
+          <Property Name="pro_dtFechaActualizacion" Type="date" />
+        </EntityType>
+        <EntityType Name="Tarea">
+          <Key>
+            <PropertyRef Name="tar_iCodigo" />
+          </Key>
+          <Property Name="tar_iCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="eva_iCodigo" Type="int" />
+          <Property Name="tar_vcDescripcion" Type="varchar" MaxLength="100" />
+          <Property Name="tar_iNotaObtenida" Type="int" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="usu_iCodigo" />
+          </Key>
+          <Property Name="usu_iCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usu_vcNombres" Type="varchar" MaxLength="45" />
+          <Property Name="usu_vcApellidos" Type="varchar" MaxLength="45" />
+          <Property Name="usu_vcEmail" Type="varchar" MaxLength="45" />
+          <Property Name="usu_vcPassword" Type="varchar" MaxLength="100" />
+          <Property Name="usu_vcTipo" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <Association Name="FK_Administrador_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Administrador" Type="Self.Administrador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usu_iCodigo" />
+            </Principal>
+            <Dependent Role="Administrador">
+              <PropertyRef Name="usu_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AsistenteEmpresa_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="AsistenteEmpresa" Type="Self.AsistenteEmpresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="emp_iCodigo" />
+            </Principal>
+            <Dependent Role="AsistenteEmpresa">
+              <PropertyRef Name="emp_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AsistenteEmpresa_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="AsistenteEmpresa" Type="Self.AsistenteEmpresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usu_iCodigo" />
+            </Principal>
+            <Dependent Role="AsistenteEmpresa">
+              <PropertyRef Name="usu_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calificacion_Evaluacion">
+          <End Role="Evaluacion" Type="Self.Evaluacion" Multiplicity="0..1" />
+          <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evaluacion">
+              <PropertyRef Name="eva_iCodigo" />
+            </Principal>
+            <Dependent Role="Calificacion">
+              <PropertyRef Name="eva_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Convenio_CoordinadorPracticas">
+          <End Role="CoordinadorPracticas" Type="Self.CoordinadorPracticas" Multiplicity="0..1" />
+          <End Role="Convenio" Type="Self.Convenio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoordinadorPracticas">
+              <PropertyRef Name="cpr_iCodigo" />
+            </Principal>
+            <Dependent Role="Convenio">
+              <PropertyRef Name="cpr_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Convenio_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Convenio" Type="Self.Convenio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="emp_iCodigo" />
+            </Principal>
+            <Dependent Role="Convenio">
+              <PropertyRef Name="emp_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoordinadorPracticas_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="CoordinadorPracticas" Type="Self.CoordinadorPracticas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usu_iCodigo" />
+            </Principal>
+            <Dependent Role="CoordinadorPracticas">
+              <PropertyRef Name="usu_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiante_Convenio">
+          <End Role="Convenio" Type="Self.Convenio" Multiplicity="0..1" />
+          <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Convenio">
+              <PropertyRef Name="con_iCodigo" />
+            </Principal>
+            <Dependent Role="Estudiante">
+              <PropertyRef Name="con_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiante_Escuela">
+          <End Role="Escuela" Type="Self.Escuela" Multiplicity="0..1" />
+          <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Escuela">
+              <PropertyRef Name="esc_iCodigo" />
+            </Principal>
+            <Dependent Role="Estudiante">
+              <PropertyRef Name="esc_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiante_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usu_iCodigo" />
+            </Principal>
+            <Dependent Role="Estudiante">
+              <PropertyRef Name="usu_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evaluacion_AsistenteEmpresa">
+          <End Role="AsistenteEmpresa" Type="Self.AsistenteEmpresa" Multiplicity="0..1" />
+          <End Role="Evaluacion" Type="Self.Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AsistenteEmpresa">
+              <PropertyRef Name="ase_iCodigo" />
+            </Principal>
+            <Dependent Role="Evaluacion">
+              <PropertyRef Name="ase_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidencia_Administrador">
+          <End Role="Administrador" Type="Self.Administrador" Multiplicity="0..1" />
+          <End Role="Incidencia" Type="Self.Incidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrador">
+              <PropertyRef Name="adm_iCodigo" />
+            </Principal>
+            <Dependent Role="Incidencia">
+              <PropertyRef Name="adm_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InformeDesempeno_CoordinadorPracticas">
+          <End Role="CoordinadorPracticas" Type="Self.CoordinadorPracticas" Multiplicity="0..1" />
+          <End Role="InformeDesempeno" Type="Self.InformeDesempeno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoordinadorPracticas">
+              <PropertyRef Name="cpr_iCodigo" />
+            </Principal>
+            <Dependent Role="InformeDesempeno">
+              <PropertyRef Name="cpr_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InformePractica_CoordinadorPracticas">
+          <End Role="CoordinadorPracticas" Type="Self.CoordinadorPracticas" Multiplicity="0..1" />
+          <End Role="InformePractica" Type="Self.InformePractica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoordinadorPracticas">
+              <PropertyRef Name="cpr_iCodigo" />
+            </Principal>
+            <Dependent Role="InformePractica">
+              <PropertyRef Name="cpr_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Progreso_Convenio">
+          <End Role="Convenio" Type="Self.Convenio" Multiplicity="0..1" />
+          <End Role="Progreso" Type="Self.Progreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Convenio">
+              <PropertyRef Name="con_iCodigo" />
+            </Principal>
+            <Dependent Role="Progreso">
+              <PropertyRef Name="con_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarea_Evaluacion">
+          <End Role="Evaluacion" Type="Self.Evaluacion" Multiplicity="0..1" />
+          <End Role="Tarea" Type="Self.Tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evaluacion">
+              <PropertyRef Name="eva_iCodigo" />
+            </Principal>
+            <Dependent Role="Tarea">
+              <PropertyRef Name="eva_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbModelStoreContainer">
+          <EntitySet Name="Administrador" EntityType="Self.Administrador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AsistenteEmpresa" EntityType="Self.AsistenteEmpresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calificacion" EntityType="Self.Calificacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Convenio" EntityType="Self.Convenio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoordinadorPracticas" EntityType="Self.CoordinadorPracticas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Escuela" EntityType="Self.Escuela" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estudiante" EntityType="Self.Estudiante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Evaluacion" EntityType="Self.Evaluacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Incidencia" EntityType="Self.Incidencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InformeDesempeno" EntityType="Self.InformeDesempeno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InformePractica" EntityType="Self.InformePractica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Progreso" EntityType="Self.Progreso" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarea" EntityType="Self.Tarea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Administrador_Usuario" Association="Self.FK_Administrador_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Administrador" EntitySet="Administrador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AsistenteEmpresa_Empresa" Association="Self.FK_AsistenteEmpresa_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="AsistenteEmpresa" EntitySet="AsistenteEmpresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AsistenteEmpresa_Usuario" Association="Self.FK_AsistenteEmpresa_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="AsistenteEmpresa" EntitySet="AsistenteEmpresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calificacion_Evaluacion" Association="Self.FK_Calificacion_Evaluacion">
+            <End Role="Evaluacion" EntitySet="Evaluacion" />
+            <End Role="Calificacion" EntitySet="Calificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Convenio_CoordinadorPracticas" Association="Self.FK_Convenio_CoordinadorPracticas">
+            <End Role="CoordinadorPracticas" EntitySet="CoordinadorPracticas" />
+            <End Role="Convenio" EntitySet="Convenio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Convenio_Empresa" Association="Self.FK_Convenio_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Convenio" EntitySet="Convenio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoordinadorPracticas_Usuario" Association="Self.FK_CoordinadorPracticas_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="CoordinadorPracticas" EntitySet="CoordinadorPracticas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiante_Convenio" Association="Self.FK_Estudiante_Convenio">
+            <End Role="Convenio" EntitySet="Convenio" />
+            <End Role="Estudiante" EntitySet="Estudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiante_Escuela" Association="Self.FK_Estudiante_Escuela">
+            <End Role="Escuela" EntitySet="Escuela" />
+            <End Role="Estudiante" EntitySet="Estudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiante_Usuario" Association="Self.FK_Estudiante_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Estudiante" EntitySet="Estudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evaluacion_AsistenteEmpresa" Association="Self.FK_Evaluacion_AsistenteEmpresa">
+            <End Role="AsistenteEmpresa" EntitySet="AsistenteEmpresa" />
+            <End Role="Evaluacion" EntitySet="Evaluacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidencia_Administrador" Association="Self.FK_Incidencia_Administrador">
+            <End Role="Administrador" EntitySet="Administrador" />
+            <End Role="Incidencia" EntitySet="Incidencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InformeDesempeno_CoordinadorPracticas" Association="Self.FK_InformeDesempeno_CoordinadorPracticas">
+            <End Role="CoordinadorPracticas" EntitySet="CoordinadorPracticas" />
+            <End Role="InformeDesempeno" EntitySet="InformeDesempeno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InformePractica_CoordinadorPracticas" Association="Self.FK_InformePractica_CoordinadorPracticas">
+            <End Role="CoordinadorPracticas" EntitySet="CoordinadorPracticas" />
+            <End Role="InformePractica" EntitySet="InformePractica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Progreso_Convenio" Association="Self.FK_Progreso_Convenio">
+            <End Role="Convenio" EntitySet="Convenio" />
+            <End Role="Progreso" EntitySet="Progreso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarea_Evaluacion" Association="Self.FK_Tarea_Evaluacion">
+            <End Role="Evaluacion" EntitySet="Evaluacion" />
+            <End Role="Tarea" EntitySet="Tarea" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Administrador">
+          <Key>
+            <PropertyRef Name="adm_iCodigo" />
+          </Key>
+          <Property Name="adm_iCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usu_iCodigo" Type="Int32" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Administrador_Usuario" FromRole="Administrador" ToRole="Usuario" />
+          <NavigationProperty Name="Incidencia" Relationship="Self.FK_Incidencia_Administrador" FromRole="Administrador" ToRole="Incidencia" />
+        </EntityType>
+        <EntityType Name="AsistenteEmpresa">
+          <Key>
+            <PropertyRef Name="ase_iCodigo" />
+          </Key>
+          <Property Name="ase_iCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usu_iCodigo" Type="Int32" />
+          <Property Name="emp_iCodigo" Type="Int32" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK_AsistenteEmpresa_Empresa" FromRole="AsistenteEmpresa" ToRole="Empresa" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_AsistenteEmpresa_Usuario" FromRole="AsistenteEmpresa" ToRole="Usuario" />
+          <NavigationProperty Name="Evaluacion" Relationship="Self.FK_Evaluacion_AsistenteEmpresa" FromRole="AsistenteEmpresa" ToRole="Evaluacion" />
+        </EntityType>
+        <EntityType Name="Calificacion">
+          <Key>
+            <PropertyRef Name="cal_iCodigo" />
+          </Key>
+          <Property Name="cal_iCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="eva_iCodigo" Type="Int32" />
+          <Property Name="cal_iNota" Type="Int32" />
+          <NavigationProperty Name="Evaluacion" Relationship="Self.FK_Calificacion_Evaluacion" FromRole="Calificacion" ToRole="Evaluacion" />
+        </EntityType>
+        <EntityType Name="Convenio">
+          <Key>
+            <PropertyRef Name="con_iCodigo" />
+          </Key>
+          <Property Name="con_iCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cpr_iCodigo" Type="Int32" />
+          <Property Name="emp_iCodigo" Type="Int32" />
+          <Property Name="con_dtFechaInicio" Type="DateTime" Precision="0" />
+          <Property Name="con_dtFechaFin" Type="DateTime" Precision="0" />
+          <Property Name="con_vcDescripcionActividades" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="con_vcPuesto" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CoordinadorPracticas" Relationship="Self.FK_Convenio_CoordinadorPracticas" FromRole="Convenio" ToRole="CoordinadorPracticas" />
+          <NavigationProperty Name="Empresa" Relationship="Self.FK_Convenio_Empresa" FromRole="Convenio" ToRole="Empresa" />
+          <NavigationProperty Name="Estudiante" Relationship="Self.FK_Estudiante_Convenio" FromRole="Convenio" ToRole="Estudiante" />
+          <NavigationProperty Name="Progreso" Relationship="Self.FK_Progreso_Convenio" FromRole="Convenio" ToRole="Progreso" />
+        </EntityType>
+        <EntityType Name="CoordinadorPracticas">
+          <Key>
+            <PropertyRef Name="cpr_iCodigo" />
+          </Key>
+          <Property Name="cpr_iCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usu_iCodigo" Type="Int32" />
+          <NavigationProperty Name="Convenio" Relationship="Self.FK_Convenio_CoordinadorPracticas" FromRole="CoordinadorPracticas" ToRole="Convenio" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_CoordinadorPracticas_Usuario" FromRole="CoordinadorPracticas" ToRole="Usuario" />
+          <NavigationProperty Name="InformeDesempeno" Relationship="Self.FK_InformeDesempeno_CoordinadorPracticas" FromRole="CoordinadorPracticas" ToRole="InformeDesempeno" />
+          <NavigationProperty Name="InformePractica" Relationship="Self.FK_InformePractica_CoordinadorPracticas" FromRole="CoordinadorPracticas" ToRole="InformePractica" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="emp_iCodigo" />
+          </Key>
+          <Property Name="emp_iCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emp_vcNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="emp_vcDireccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AsistenteEmpresa" Relationship="Self.FK_AsistenteEmpresa_Empresa" FromRole="Empresa" ToRole="AsistenteEmpresa" />
+          <NavigationProperty Name="Convenio" Relationship="Self.FK_Convenio_Empresa" FromRole="Empresa" ToRole="Convenio" />
+        </EntityType>
+        <EntityType Name="Escuela">
+          <Key>
+            <PropertyRef Name="esc_iCodigo" />
+          </Key>
+          <Property Name="esc_iCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="esc_vcNombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estudiante" Relationship="Self.FK_Estudiante_Escuela" FromRole="Escuela" ToRole="Estudiante" />
+        </EntityType>
+        <EntityType Name="Estudiante">
+          <Key>
+            <PropertyRef Name="est_iCodigo" />
+          </Key>
+          <Property Name="est_iCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="con_iCodigo" Type="Int32" />
+          <Property Name="usu_iCodigo" Type="Int32" />
+          <Property Name="est_vcCodigo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="est_vcCorreo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="esc_iCodigo" Type="Int32" />
+          <NavigationProperty Name="Convenio" Relationship="Self.FK_Estudiante_Convenio" FromRole="Estudiante" ToRole="Convenio" />
+          <NavigationProperty Name="Escuela" Relationship="Self.FK_Estudiante_Escuela" FromRole="Estudiante" ToRole="Escuela" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Estudiante_Usuario" FromRole="Estudiante" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Evaluacion">
+          <Key>
+            <PropertyRef Name="eva_iCodigo" />
+          </Key>
+          <Property Name="eva_iCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ase_iCodigo" Type="Int32" />
+          <Property Name="eva_vcDescripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AsistenteEmpresa" Relationship="Self.FK_Evaluacion_AsistenteEmpresa" FromRole="Evaluacion" ToRole="AsistenteEmpresa" />
+          <NavigationProperty Name="Calificacion" Relationship="Self.FK_Calificacion_Evaluacion" FromRole="Evaluacion" ToRole="Calificacion" />
+          <NavigationProperty Name="Tarea" Relationship="Self.FK_Tarea_Evaluacion" FromRole="Evaluacion" ToRole="Tarea" />
+        </EntityType>
+        <EntityType Name="Incidencia">
+          <Key>
+            <PropertyRef Name="inc_iCodigo" />
+          </Key>
+          <Property Name="inc_iCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adm_iCodigo" Type="Int32" />
+          <Property Name="inc_txDescripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Administrador" Relationship="Self.FK_Incidencia_Administrador" FromRole="Incidencia" ToRole="Administrador" />
+        </EntityType>
+        <EntityType Name="InformeDesempeno">
+          <Key>
+            <PropertyRef Name="ind_iCodigo" />
+          </Key>
+          <Property Name="ind_iCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cpr_iCodigo" Type="Int32" />
+          <Property Name="ind_vcContenido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ind_dtFechaRevision" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CoordinadorPracticas" Relationship="Self.FK_InformeDesempeno_CoordinadorPracticas" FromRole="InformeDesempeno" ToRole="CoordinadorPracticas" />
+        </EntityType>
+        <EntityType Name="InformePractica">
+          <Key>
+            <PropertyRef Name="inp_iCodigo" />
+          </Key>
+          <Property Name="inp_iCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cpr_iCodigo" Type="Int32" />
+          <Property Name="inp_vcContenido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="inp_dtFechaEnvio" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CoordinadorPracticas" Relationship="Self.FK_InformePractica_CoordinadorPracticas" FromRole="InformePractica" ToRole="CoordinadorPracticas" />
+        </EntityType>
+        <EntityType Name="Progreso">
+          <Key>
+            <PropertyRef Name="pro_iCodigo" />
+          </Key>
+          <Property Name="pro_iCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="con_iCodigo" Type="Int32" />
+          <Property Name="eva_iCodigo" Type="Int32" />
+          <Property Name="pro_vcDetalles" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="pro_dtFechaActualizacion" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Convenio" Relationship="Self.FK_Progreso_Convenio" FromRole="Progreso" ToRole="Convenio" />
+        </EntityType>
+        <EntityType Name="Tarea">
+          <Key>
+            <PropertyRef Name="tar_iCodigo" />
+          </Key>
+          <Property Name="tar_iCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="eva_iCodigo" Type="Int32" />
+          <Property Name="tar_vcDescripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="tar_iNotaObtenida" Type="Int32" />
+          <NavigationProperty Name="Evaluacion" Relationship="Self.FK_Tarea_Evaluacion" FromRole="Tarea" ToRole="Evaluacion" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="usu_iCodigo" />
+          </Key>
+          <Property Name="usu_iCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usu_vcNombres" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="usu_vcApellidos" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="usu_vcEmail" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="usu_vcPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="usu_vcTipo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Administrador" Relationship="Self.FK_Administrador_Usuario" FromRole="Usuario" ToRole="Administrador" />
+          <NavigationProperty Name="AsistenteEmpresa" Relationship="Self.FK_AsistenteEmpresa_Usuario" FromRole="Usuario" ToRole="AsistenteEmpresa" />
+          <NavigationProperty Name="CoordinadorPracticas" Relationship="Self.FK_CoordinadorPracticas_Usuario" FromRole="Usuario" ToRole="CoordinadorPracticas" />
+          <NavigationProperty Name="Estudiante" Relationship="Self.FK_Estudiante_Usuario" FromRole="Usuario" ToRole="Estudiante" />
+        </EntityType>
+        <Association Name="FK_Administrador_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Administrador" Type="Self.Administrador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usu_iCodigo" />
+            </Principal>
+            <Dependent Role="Administrador">
+              <PropertyRef Name="usu_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidencia_Administrador">
+          <End Role="Administrador" Type="Self.Administrador" Multiplicity="0..1" />
+          <End Role="Incidencia" Type="Self.Incidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrador">
+              <PropertyRef Name="adm_iCodigo" />
+            </Principal>
+            <Dependent Role="Incidencia">
+              <PropertyRef Name="adm_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AsistenteEmpresa_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="AsistenteEmpresa" Type="Self.AsistenteEmpresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="emp_iCodigo" />
+            </Principal>
+            <Dependent Role="AsistenteEmpresa">
+              <PropertyRef Name="emp_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AsistenteEmpresa_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="AsistenteEmpresa" Type="Self.AsistenteEmpresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usu_iCodigo" />
+            </Principal>
+            <Dependent Role="AsistenteEmpresa">
+              <PropertyRef Name="usu_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Evaluacion_AsistenteEmpresa">
+          <End Role="AsistenteEmpresa" Type="Self.AsistenteEmpresa" Multiplicity="0..1" />
+          <End Role="Evaluacion" Type="Self.Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AsistenteEmpresa">
+              <PropertyRef Name="ase_iCodigo" />
+            </Principal>
+            <Dependent Role="Evaluacion">
+              <PropertyRef Name="ase_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Calificacion_Evaluacion">
+          <End Role="Evaluacion" Type="Self.Evaluacion" Multiplicity="0..1" />
+          <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evaluacion">
+              <PropertyRef Name="eva_iCodigo" />
+            </Principal>
+            <Dependent Role="Calificacion">
+              <PropertyRef Name="eva_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Convenio_CoordinadorPracticas">
+          <End Role="CoordinadorPracticas" Type="Self.CoordinadorPracticas" Multiplicity="0..1" />
+          <End Role="Convenio" Type="Self.Convenio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoordinadorPracticas">
+              <PropertyRef Name="cpr_iCodigo" />
+            </Principal>
+            <Dependent Role="Convenio">
+              <PropertyRef Name="cpr_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Convenio_Empresa">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Convenio" Type="Self.Convenio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="emp_iCodigo" />
+            </Principal>
+            <Dependent Role="Convenio">
+              <PropertyRef Name="emp_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiante_Convenio">
+          <End Role="Convenio" Type="Self.Convenio" Multiplicity="0..1" />
+          <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Convenio">
+              <PropertyRef Name="con_iCodigo" />
+            </Principal>
+            <Dependent Role="Estudiante">
+              <PropertyRef Name="con_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Progreso_Convenio">
+          <End Role="Convenio" Type="Self.Convenio" Multiplicity="0..1" />
+          <End Role="Progreso" Type="Self.Progreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Convenio">
+              <PropertyRef Name="con_iCodigo" />
+            </Principal>
+            <Dependent Role="Progreso">
+              <PropertyRef Name="con_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoordinadorPracticas_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="CoordinadorPracticas" Type="Self.CoordinadorPracticas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usu_iCodigo" />
+            </Principal>
+            <Dependent Role="CoordinadorPracticas">
+              <PropertyRef Name="usu_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InformeDesempeno_CoordinadorPracticas">
+          <End Role="CoordinadorPracticas" Type="Self.CoordinadorPracticas" Multiplicity="0..1" />
+          <End Role="InformeDesempeno" Type="Self.InformeDesempeno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoordinadorPracticas">
+              <PropertyRef Name="cpr_iCodigo" />
+            </Principal>
+            <Dependent Role="InformeDesempeno">
+              <PropertyRef Name="cpr_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InformePractica_CoordinadorPracticas">
+          <End Role="CoordinadorPracticas" Type="Self.CoordinadorPracticas" Multiplicity="0..1" />
+          <End Role="InformePractica" Type="Self.InformePractica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoordinadorPracticas">
+              <PropertyRef Name="cpr_iCodigo" />
+            </Principal>
+            <Dependent Role="InformePractica">
+              <PropertyRef Name="cpr_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiante_Escuela">
+          <End Role="Escuela" Type="Self.Escuela" Multiplicity="0..1" />
+          <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Escuela">
+              <PropertyRef Name="esc_iCodigo" />
+            </Principal>
+            <Dependent Role="Estudiante">
+              <PropertyRef Name="esc_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Estudiante_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usu_iCodigo" />
+            </Principal>
+            <Dependent Role="Estudiante">
+              <PropertyRef Name="usu_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tarea_Evaluacion">
+          <End Role="Evaluacion" Type="Self.Evaluacion" Multiplicity="0..1" />
+          <End Role="Tarea" Type="Self.Tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evaluacion">
+              <PropertyRef Name="eva_iCodigo" />
+            </Principal>
+            <Dependent Role="Tarea">
+              <PropertyRef Name="eva_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBModels" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Administrador" EntityType="Self.Administrador" />
+          <EntitySet Name="AsistenteEmpresa" EntityType="Self.AsistenteEmpresa" />
+          <EntitySet Name="Calificacion" EntityType="Self.Calificacion" />
+          <EntitySet Name="Convenio" EntityType="Self.Convenio" />
+          <EntitySet Name="CoordinadorPracticas" EntityType="Self.CoordinadorPracticas" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" />
+          <EntitySet Name="Escuela" EntityType="Self.Escuela" />
+          <EntitySet Name="Estudiante" EntityType="Self.Estudiante" />
+          <EntitySet Name="Evaluacion" EntityType="Self.Evaluacion" />
+          <EntitySet Name="Incidencia" EntityType="Self.Incidencia" />
+          <EntitySet Name="InformeDesempeno" EntityType="Self.InformeDesempeno" />
+          <EntitySet Name="InformePractica" EntityType="Self.InformePractica" />
+          <EntitySet Name="Progreso" EntityType="Self.Progreso" />
+          <EntitySet Name="Tarea" EntityType="Self.Tarea" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Administrador_Usuario" Association="Self.FK_Administrador_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Administrador" EntitySet="Administrador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidencia_Administrador" Association="Self.FK_Incidencia_Administrador">
+            <End Role="Administrador" EntitySet="Administrador" />
+            <End Role="Incidencia" EntitySet="Incidencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AsistenteEmpresa_Empresa" Association="Self.FK_AsistenteEmpresa_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="AsistenteEmpresa" EntitySet="AsistenteEmpresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AsistenteEmpresa_Usuario" Association="Self.FK_AsistenteEmpresa_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="AsistenteEmpresa" EntitySet="AsistenteEmpresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Evaluacion_AsistenteEmpresa" Association="Self.FK_Evaluacion_AsistenteEmpresa">
+            <End Role="AsistenteEmpresa" EntitySet="AsistenteEmpresa" />
+            <End Role="Evaluacion" EntitySet="Evaluacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Calificacion_Evaluacion" Association="Self.FK_Calificacion_Evaluacion">
+            <End Role="Evaluacion" EntitySet="Evaluacion" />
+            <End Role="Calificacion" EntitySet="Calificacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Convenio_CoordinadorPracticas" Association="Self.FK_Convenio_CoordinadorPracticas">
+            <End Role="CoordinadorPracticas" EntitySet="CoordinadorPracticas" />
+            <End Role="Convenio" EntitySet="Convenio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Convenio_Empresa" Association="Self.FK_Convenio_Empresa">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Convenio" EntitySet="Convenio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiante_Convenio" Association="Self.FK_Estudiante_Convenio">
+            <End Role="Convenio" EntitySet="Convenio" />
+            <End Role="Estudiante" EntitySet="Estudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Progreso_Convenio" Association="Self.FK_Progreso_Convenio">
+            <End Role="Convenio" EntitySet="Convenio" />
+            <End Role="Progreso" EntitySet="Progreso" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoordinadorPracticas_Usuario" Association="Self.FK_CoordinadorPracticas_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="CoordinadorPracticas" EntitySet="CoordinadorPracticas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InformeDesempeno_CoordinadorPracticas" Association="Self.FK_InformeDesempeno_CoordinadorPracticas">
+            <End Role="CoordinadorPracticas" EntitySet="CoordinadorPracticas" />
+            <End Role="InformeDesempeno" EntitySet="InformeDesempeno" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InformePractica_CoordinadorPracticas" Association="Self.FK_InformePractica_CoordinadorPracticas">
+            <End Role="CoordinadorPracticas" EntitySet="CoordinadorPracticas" />
+            <End Role="InformePractica" EntitySet="InformePractica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiante_Escuela" Association="Self.FK_Estudiante_Escuela">
+            <End Role="Escuela" EntitySet="Escuela" />
+            <End Role="Estudiante" EntitySet="Estudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estudiante_Usuario" Association="Self.FK_Estudiante_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Estudiante" EntitySet="Estudiante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tarea_Evaluacion" Association="Self.FK_Tarea_Evaluacion">
+            <End Role="Evaluacion" EntitySet="Evaluacion" />
+            <End Role="Tarea" EntitySet="Tarea" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbModelStoreContainer" CdmEntityContainer="DBModels">
+          <EntitySetMapping Name="Administrador">
+            <EntityTypeMapping TypeName="DbModel.Administrador">
+              <MappingFragment StoreEntitySet="Administrador">
+                <ScalarProperty Name="adm_iCodigo" ColumnName="adm_iCodigo" />
+                <ScalarProperty Name="usu_iCodigo" ColumnName="usu_iCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AsistenteEmpresa">
+            <EntityTypeMapping TypeName="DbModel.AsistenteEmpresa">
+              <MappingFragment StoreEntitySet="AsistenteEmpresa">
+                <ScalarProperty Name="ase_iCodigo" ColumnName="ase_iCodigo" />
+                <ScalarProperty Name="usu_iCodigo" ColumnName="usu_iCodigo" />
+                <ScalarProperty Name="emp_iCodigo" ColumnName="emp_iCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calificacion">
+            <EntityTypeMapping TypeName="DbModel.Calificacion">
+              <MappingFragment StoreEntitySet="Calificacion">
+                <ScalarProperty Name="cal_iCodigo" ColumnName="cal_iCodigo" />
+                <ScalarProperty Name="eva_iCodigo" ColumnName="eva_iCodigo" />
+                <ScalarProperty Name="cal_iNota" ColumnName="cal_iNota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Convenio">
+            <EntityTypeMapping TypeName="DbModel.Convenio">
+              <MappingFragment StoreEntitySet="Convenio">
+                <ScalarProperty Name="con_iCodigo" ColumnName="con_iCodigo" />
+                <ScalarProperty Name="cpr_iCodigo" ColumnName="cpr_iCodigo" />
+                <ScalarProperty Name="emp_iCodigo" ColumnName="emp_iCodigo" />
+                <ScalarProperty Name="con_dtFechaInicio" ColumnName="con_dtFechaInicio" />
+                <ScalarProperty Name="con_dtFechaFin" ColumnName="con_dtFechaFin" />
+                <ScalarProperty Name="con_vcDescripcionActividades" ColumnName="con_vcDescripcionActividades" />
+                <ScalarProperty Name="con_vcPuesto" ColumnName="con_vcPuesto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoordinadorPracticas">
+            <EntityTypeMapping TypeName="DbModel.CoordinadorPracticas">
+              <MappingFragment StoreEntitySet="CoordinadorPracticas">
+                <ScalarProperty Name="cpr_iCodigo" ColumnName="cpr_iCodigo" />
+                <ScalarProperty Name="usu_iCodigo" ColumnName="usu_iCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="DbModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="emp_iCodigo" ColumnName="emp_iCodigo" />
+                <ScalarProperty Name="emp_vcNombre" ColumnName="emp_vcNombre" />
+                <ScalarProperty Name="emp_vcDireccion" ColumnName="emp_vcDireccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Escuela">
+            <EntityTypeMapping TypeName="DbModel.Escuela">
+              <MappingFragment StoreEntitySet="Escuela">
+                <ScalarProperty Name="esc_iCodigo" ColumnName="esc_iCodigo" />
+                <ScalarProperty Name="esc_vcNombre" ColumnName="esc_vcNombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estudiante">
+            <EntityTypeMapping TypeName="DbModel.Estudiante">
+              <MappingFragment StoreEntitySet="Estudiante">
+                <ScalarProperty Name="est_iCodigo" ColumnName="est_iCodigo" />
+                <ScalarProperty Name="con_iCodigo" ColumnName="con_iCodigo" />
+                <ScalarProperty Name="usu_iCodigo" ColumnName="usu_iCodigo" />
+                <ScalarProperty Name="est_vcCodigo" ColumnName="est_vcCodigo" />
+                <ScalarProperty Name="est_vcCorreo" ColumnName="est_vcCorreo" />
+                <ScalarProperty Name="esc_iCodigo" ColumnName="esc_iCodigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Evaluacion">
+            <EntityTypeMapping TypeName="DbModel.Evaluacion">
+              <MappingFragment StoreEntitySet="Evaluacion">
+                <ScalarProperty Name="eva_iCodigo" ColumnName="eva_iCodigo" />
+                <ScalarProperty Name="ase_iCodigo" ColumnName="ase_iCodigo" />
+                <ScalarProperty Name="eva_vcDescripcion" ColumnName="eva_vcDescripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incidencia">
+            <EntityTypeMapping TypeName="DbModel.Incidencia">
+              <MappingFragment StoreEntitySet="Incidencia">
+                <ScalarProperty Name="inc_iCodigo" ColumnName="inc_iCodigo" />
+                <ScalarProperty Name="adm_iCodigo" ColumnName="adm_iCodigo" />
+                <ScalarProperty Name="inc_txDescripcion" ColumnName="inc_txDescripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InformeDesempeno">
+            <EntityTypeMapping TypeName="DbModel.InformeDesempeno">
+              <MappingFragment StoreEntitySet="InformeDesempeno">
+                <ScalarProperty Name="ind_iCodigo" ColumnName="ind_iCodigo" />
+                <ScalarProperty Name="cpr_iCodigo" ColumnName="cpr_iCodigo" />
+                <ScalarProperty Name="ind_vcContenido" ColumnName="ind_vcContenido" />
+                <ScalarProperty Name="ind_dtFechaRevision" ColumnName="ind_dtFechaRevision" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InformePractica">
+            <EntityTypeMapping TypeName="DbModel.InformePractica">
+              <MappingFragment StoreEntitySet="InformePractica">
+                <ScalarProperty Name="inp_iCodigo" ColumnName="inp_iCodigo" />
+                <ScalarProperty Name="cpr_iCodigo" ColumnName="cpr_iCodigo" />
+                <ScalarProperty Name="inp_vcContenido" ColumnName="inp_vcContenido" />
+                <ScalarProperty Name="inp_dtFechaEnvio" ColumnName="inp_dtFechaEnvio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Progreso">
+            <EntityTypeMapping TypeName="DbModel.Progreso">
+              <MappingFragment StoreEntitySet="Progreso">
+                <ScalarProperty Name="pro_iCodigo" ColumnName="pro_iCodigo" />
+                <ScalarProperty Name="con_iCodigo" ColumnName="con_iCodigo" />
+                <ScalarProperty Name="eva_iCodigo" ColumnName="eva_iCodigo" />
+                <ScalarProperty Name="pro_vcDetalles" ColumnName="pro_vcDetalles" />
+                <ScalarProperty Name="pro_dtFechaActualizacion" ColumnName="pro_dtFechaActualizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tarea">
+            <EntityTypeMapping TypeName="DbModel.Tarea">
+              <MappingFragment StoreEntitySet="Tarea">
+                <ScalarProperty Name="tar_iCodigo" ColumnName="tar_iCodigo" />
+                <ScalarProperty Name="eva_iCodigo" ColumnName="eva_iCodigo" />
+                <ScalarProperty Name="tar_vcDescripcion" ColumnName="tar_vcDescripcion" />
+                <ScalarProperty Name="tar_iNotaObtenida" ColumnName="tar_iNotaObtenida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="DbModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="usu_iCodigo" ColumnName="usu_iCodigo" />
+                <ScalarProperty Name="usu_vcNombres" ColumnName="usu_vcNombres" />
+                <ScalarProperty Name="usu_vcApellidos" ColumnName="usu_vcApellidos" />
+                <ScalarProperty Name="usu_vcEmail" ColumnName="usu_vcEmail" />
+                <ScalarProperty Name="usu_vcPassword" ColumnName="usu_vcPassword" />
+                <ScalarProperty Name="usu_vcTipo" ColumnName="usu_vcTipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
