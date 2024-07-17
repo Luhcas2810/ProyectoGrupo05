@@ -1,0 +1,80 @@
+﻿@model IEnumerable<SIPSProyecto.Models.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<head>
+    <link href="~/Content/indexAdminStyles.css" rel="stylesheet" />
+</head>
+
+<h2>Usuarios del Sistema</h2>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-warning">
+        @TempData["AlertMessage"]
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+    </div>
+
+}
+@using (Html.BeginForm("Search", "Usuario"))
+{
+    <div class="form-group">
+        @Html.TextBox("nombres_usu", null, new { @class = "TextBox", @placeholder = "Ingrese nombre de usuario" })
+        @Html.TextBox("apellidos_usu", null, new { @class = "TextBox", @placeholder = "Ingrese apellido de usuario" })
+        @Html.TextBox("correo_usu", null, new { @class = "TextBox", @placeholder = "Ingrese correo de usuario" })
+        @Html.TextBox("tipo_usu", null, new { @class = "TextBox", @placeholder = "Ingrese tipo de usuario" })
+        <button type="submit"></button>
+        @*<button class="btn btn-primary" onclick="mostrar()"></button>*@
+    </div>
+}
+<hr class="divider">
+<table class="student-table">
+    <tr>
+        <th>
+            Nombres
+        </th>
+        <th>
+            Apellidos
+        </th>
+        <th>
+            Correo
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.usu_vcNombres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usu_vcApellidos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usu_vcEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.usu_vcTipo)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.usu_iCodigo }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Detalle", "Details", new { id = item.usu_iCodigo }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.usu_iCodigo }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<p>
+    @Html.ActionLink("Agregar usuario", "Create", "", new { @class = "btn btn-success", @style = "margin-left: 0px; margin-top: 15px; font-size: 16px;" })
+</p>

@@ -1,0 +1,279 @@
+html, body {
+    background-color: rgb(244, 215, 209);
+    margin: 0;
+    padding: 0;
+    font-family: "Georgia", serif;
+    height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos de la barra lateral */
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000; /* Fondo negro para la barra lateral */
+    padding-top: 20px;
+}
+
+.sidebar h2 {
+    color: white;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    padding-right: 50px; /* Ajusta el espacio para la imagen */
+    font-size: 40px;
+}
+
+.sidebar h2::after {
+    content: '';
+    display: inline-block;
+    background-image: url('../fonts/Imagenes/Logo_UNMSM.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 50px; /* Tamaño más grande para la imagen */
+    height: 50px;
+    margin-left: 10px; /* Espacio entre el texto y la imagen */
+    position: absolute;
+    right: 160px; /* Desplaza la imagen fuera del rango de la frase */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.tipo_user {
+    color: white;
+    background-color: #333; /* Fondo oscuro para el cuadro del tipo de usuario */
+    border-radius: 15px;
+    padding: 6px;
+    text-align: center;
+    margin: 20px 35px; /* Espaciado superior e inferior */
+    padding-left: 45px;
+    margin-bottom: 0.75em;
+    background-image: url('../fonts/Imagenes/icono_usuario.png');
+    background-size: 40px 40px; /* Tamaño más pequeño para la imagen */
+    background-repeat: no-repeat;
+    background-position: 10px center; /* Ajustar la posición de la imagen */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: #000; /* Fondo negro para la lista de la barra lateral */
+    margin-top: 40px; /* Ajusta este valor para mover la lista más abajo */
+}
+
+.sidebar ul li {
+    font: menu;
+    padding: 8px;
+    text-align: left;
+    font-size: 12px;
+    border-radius: 15px;
+    margin: 20px 35px; /* Espaciado superior e inferior */
+    padding-left: 45px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus, /* Para navegación con teclado */
+.sidebar ul li a:active { /* Para estado activo (clicado) */
+    background-color: #575757; /* Color de fondo resaltado */
+    border-radius: 12px;
+    padding: 4px;
+}
+
+/* Estilos del contenido */
+.content {
+    font: menu;
+    font-size: medium;
+    margin-left: 260px; /* mismo que el ancho de la barra lateral + algo de margen */
+    margin-top: -15px;
+    padding: 20px;
+}
+
+.content p{
+    font-size: large;
+}
+
+.divider {
+    border: none; /* Elimina el borde predeterminado */
+    height: 1px; /* Altura de la línea */
+    background-color: #ccc; /* Color de la línea */
+    margin-top: 20px; /* Espacio superior */
+}
+
+/* Estilos del formulario */
+.container {
+    position: relative;
+    left: 0px; /* Ajusta este valor para mover más a la derecha */
+    width: 82%;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #FAF2F2;
+    margin-top: 20px; /* Agrega más espacio entre el encabezado y el cuadro de formulario */
+    gap: 20px; /* Espaciado entre los elementos */
+    overflow: hidden; /* Para limpiar los floats */
+}
+
+.columna1 {
+    float: left; /* Flota la primera columna a la izquierda */
+    width: 45%; /* Ancho de la primera columna */
+    margin-right: 5%; /* Margen derecho para separar las columnas */
+}
+
+.columna2 {
+    float: left; /* Flota la segunda columna a la izquierda */
+    width: 45%; /* Ancho de la segunda columna */
+}
+.container button[type="button"] {
+    background-color: #f2a365;
+    color: white;
+}
+
+select {
+    font: menu;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none; /* Remove default arrow */
+    background: url('../fonts/Imagenes/icono_desplegable.png') no-repeat right 10px center;
+    background-color: #fff;
+    background-size: 12px 12px;
+}
+
+.form-group label {
+    display: block; /* Cada etiqueta ocupa una línea completa */
+    margin-bottom: 5px; /* Espacio entre etiqueta y campo de entrada */
+}
+
+.form-group input {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 8px; /* Ajusta el relleno según sea necesario */
+    border: 1px solid #ccc; /* Añade un borde para claridad */
+    border-radius: 4px; /* Añade esquinas redondeadas a los campos de entrada */
+    box-sizing: border-box; /* Asegura que el relleno y el borde no afecten el ancho total */
+}
+.content button {
+    position: relative;
+    left: 70px;
+    padding: 10px 15px;
+    margin-top: 20px;
+    margin-right: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.content button[type="submit"] {
+    background-color: #f2a365;
+    color: white;
+}
+
+.evaluation-section {
+    font: menu;
+    font-size: medium;
+    position: relative;
+    left: 70px; /* Ajusta este valor para mover más a la derecha */
+    width: 82%;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #FAF2F2;
+    margin-top: 20px; /* Agrega más espacio entre el encabezado y el cuadro de formulario */
+    gap: 20px; /* Espaciado entre los elementos */
+    overflow: hidden; /* Para limpiar los floats */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.evaluation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.evaluation-title {
+    background-color: #FF894E;
+    border-radius: 5px;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+.final-score {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.final-score span {
+    font-weight: bold;
+    color: black;
+}
+
+.final-score input {
+    width: 50px;
+    height: 25px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.evaluation-content {
+    font-size: small;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.evaluation-item {
+    height: 55px;
+    flex: 1 1 calc(12% - 6px);
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.evaluation-item input {
+    width: 40px;
+    height: 30px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.dropdown-arrow {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 12px;
+}
+
+.dropdown-arrow span {
+    font-size: 24px;
+    color: #ff6f3d;
+    cursor: pointer;
+}

@@ -9,26 +9,17 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                </ul>
-            </div>
+    <div class="sidebar">
+        <h2>SIPS</h2>
+        <div class="tipo_user">
+            <p>@(Session["tipo"] != null ? Session["tipo"].ToString() : "Usuario")</p>
         </div>
+        <ul>
+            <li><a href="~/Usuario/Index">Usuarios del sistema</a></li>
+            <li><a href="#Resolver_incidencia">Resolver incidencia</a></li>
+        </ul>
     </div>
-    <div class="container body-content">
+    <div class="content">
         @RenderBody()
         <hr />
         <footer>

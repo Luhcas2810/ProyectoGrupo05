@@ -1,0 +1,277 @@
+html, body {
+    background-color: rgb(244, 215, 209);
+    margin: 0;
+    padding: 0;
+    font-family: "Georgia", serif;
+    height: 100%;
+}
+
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000; /* Fondo negro para la barra lateral */
+    padding-top: 20px;
+}
+
+.sidebar h2 {
+    color: white;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    padding-right: 50px; /* Ajusta el espacio para la imagen */
+    font-size: 40px;
+}
+
+.sidebar h2::after {
+    content: '';
+    display: inline-block;
+    background-image: url('../fonts/Imagenes/Logo_UNMSM.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 50px; /* Tamaño más grande para la imagen */
+    height: 50px;
+    margin-left: 10px; /* Espacio entre el texto y la imagen */
+    position: absolute;
+    right: 160px; /* Desplaza la imagen fuera del rango de la frase */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.tipo_user {
+    color: white;
+    background-color: #333; /* Fondo oscuro para el cuadro del tipo de usuario */
+    border-radius: 15px;
+    padding: 6px;
+    text-align: center;
+    margin: 20px 35px; /* Espaciado superior e inferior */
+    padding-left: 45px;
+    margin-bottom: 0.75em;
+    background-image: url('../fonts/Imagenes/icono_usuario.png');
+    background-size: 40px 40px; /* Tamaño más pequeño para la imagen */
+    background-repeat: no-repeat;
+    background-position: 10px center; /* Ajustar la posición de la imagen */
+}
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: #000; /* Fondo negro para la lista de la barra lateral */
+    margin-top: 40px; /* Ajusta este valor para mover la lista más abajo */
+}
+
+.sidebar ul li {
+    font: menu;
+    padding: 8px;
+    text-align: left;
+    font-size: 12px;
+    border-radius: 15px;
+    margin: 20px 35px; /* Espaciado superior e inferior */
+    padding-left: 45px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus, /* Para navegación con teclado */
+.sidebar ul li a:active { /* Para estado activo (clicado) */
+    background-color: #575757; /* Color de fondo resaltado */
+    border-radius: 12px;
+    padding: 4px;
+}
+
+.content {
+    font: menu;
+    font-size: medium;
+    margin-left: 260px; /* same as the width of the sidebar + some margin */
+    margin-top: -15px;
+    padding: 20px;
+
+}
+
+.presentacion {
+    background-color: thistle;
+    color: #000;
+    text-align: center;
+    padding: 3px;
+    background-size: 75px 80px;
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+
+.Todos_los_servicios {
+    text-align: center;
+}
+
+.chat-widget iframe {
+    width: 300px;
+    height: 500px;
+    border: none;
+}
+
+.servicio {
+    text-align: center; /* Centra el contenido */
+    margin: 20px 0;
+}
+
+ul {
+    background-color: rgb(161, 156, 192);
+    height: 200px;
+    margin-top: 0px;
+}
+
+.margen {
+    background-color: chocolate;
+    margin: 15px; /*20px 25px 30px*/ /*arriba, derecha, abajo, izquierda*/
+    padding: 30px 25px 20px 15px;
+    border: solid 1px black;
+    height: 150px;
+    width: 100px;
+    overflow: scroll;
+    outline: 1px solid red;
+}
+
+.text {
+    background-color: thistle;
+    height: 80px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: italic;
+    padding: 0.7cm 0.2cm;
+    text-align: center;
+    text-shadow: 3px 5px 5px blue; /*sombra de letra*/
+    /*background-image: url('Logo_UNMSM.png');*/
+    background-size: 70px 75px;
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.form-group label {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.form-group {
+    display: flex;
+  }
+  
+.form-group input {
+    width: 25%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    display: inline-block;
+  }
+
+.form-group button {
+    background-image: url('../fonts/Imagenes/icono_buscar.png');
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 40px; /* Establece un ancho fijo para el botón redondo */
+    height: 40px; /* Establece una altura fija para el botón redondo */
+    padding: 0; /* Elimina el padding para mantener la forma circular */
+    border: none;
+    border-radius: 50%; /* Hace el botón redondo */
+    cursor: pointer;
+    text-align: center; /* Centra el texto en el botón */
+    line-height: 50px; /* Centra verticalmente el texto */
+    margin-right: 10px;
+}
+
+.form-group button[type="button"] {
+    background-color: #F07A61;
+    color: white;
+}
+.divider {
+    border: none; /* Elimina el borde predeterminado */
+    height: 1px; /* Altura de la línea */
+    background-color: #ccc; /* Color de la línea */
+    margin-top: 20px; /* Espacio superior */
+}
+
+select {
+    color: #7c7c7c;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none; /* Remove default arrow */
+    background: url('../fonts/Imagenes/icono_desplegable.png') no-repeat right 10px center;
+    background-color: #fff;
+    background-size: 12px 12px;
+}
+/* Estilos para la tabla */
+.student-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.student-table th, .student-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.student-table th {
+    background-color: #f2a365;
+    color: white;
+}
+
+.student-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.student-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilo para la fila sin datos */
+.no-data td {
+    text-align: center;
+    color: #999;
+}
+
+/* Estilos para la paginación */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.pagination button.active {
+    background-color: #f2a365;
+    color: white;
+}
+
+.pagination button:hover:not(.active) {
+    background-color: #ddd;
+}
