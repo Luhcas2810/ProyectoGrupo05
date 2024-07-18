@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace SIPSProyecto.Controllers
 {
+    [ValidarSesion]
     public class UsuarioController : Controller
     {
         // GET: Usuario
