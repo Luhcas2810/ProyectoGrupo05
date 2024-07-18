@@ -114,6 +114,7 @@ namespace SIPSProyecto.Controllers
                             Estudiante estudiante = new Estudiante();
                             estudiante.usu_iCodigo = usuario.usu_iCodigo;
                             estudiante.esc_iCodigo = usuario.Escuela;
+                            estudiante.est_vcCodigo = usuario.Codigo;
                             context.Estudiante.Add(estudiante);
                         }
                         usuario.usu_vcContrasena = ConvertirContrasenia(usuario.usu_vcContrasena);

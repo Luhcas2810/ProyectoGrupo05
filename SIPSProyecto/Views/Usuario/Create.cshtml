@@ -1,0 +1,219 @@
+﻿@model SIPSProyecto.Models.Usuario
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Agregor Usuario</h2>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/cus7styles.css">
+</head>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["AlertMessage"]
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+    </div>
+
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <hr class="divider">
+    <div class="container">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="columna1">
+            <div class="form-group">
+                <label for="usu_vcNombres">Nombres: </label>
+                @Html.EditorFor(model => model.usu_vcNombres, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.usu_vcNombres, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="usu_vcApellidos">Apellidos: </label>
+                @Html.EditorFor(model => model.usu_vcApellidos, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.usu_vcApellidos, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="usu_vcEmail">Correo: </label>
+                @Html.EditorFor(model => model.usu_vcCorreo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.usu_vcCorreo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="columna2">
+            <div class="form-group">
+                <label for="usu_vcTipo">Tipo: </label>
+                <div style="display: flex; align-items: center;">
+                    @Html.DropDownListFor(model => model.usu_vcTipo, new List<SelectListItem>
+                           {
+                               new SelectListItem { Text = "Administrador", Value = "Administrador" },
+                               new SelectListItem { Text = "Coordinador", Value = "Coordinador" },
+                               new SelectListItem { Text = "Asistente de empresa", Value = "Asistente de empresa" },
+                               new SelectListItem { Text = "Estudiante", Value = "Estudiante" }
+                           }, "Seleccione un tipo", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.usu_vcTipo, "", new { @class = "text-danger" })
+
+                    <button class="btn-success" id="openFormButton" onclick="openModal()" style="margin-left: -60px; margin-top: 0px; font-size: 10px; display: none; ">+</button>
+                    <button class="btn-success" id="openFormButton2" onclick="openModal2()" style="margin-left: -60px; margin-top: 0px; font-size: 10px; display: none;">+</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="usu_vcPassword">Contraseña: </label>
+                @Html.EditorFor(model => model.usu_vcContrasena, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.usu_vcContrasena, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="confirmarContrasenia">Confirmar contraseña: </label>
+                @Html.EditorFor(model => model.confirmarContrasenia, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.confirmarContrasenia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Asistente de Empresa</h3>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Empresa, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Empresa, (SelectList)ViewBag.Empresas, "Seleccione una empresa", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Empresa, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <button type="button" Text="Guardar" OnClick="closeModal()" class="btn-primary" style="margin-left: -60px; margin-top: 0px; font-size: 15px;">Guardar</button>
+            @Html.ActionLink("Agregar empresa", "Create", "Empresa", new { }, new { @class = "btn btn-success", @style = "margin-left: 50px; margin-top: -4px; font-size: 16px;" })
+        </div>
+    </div>
+    <div id="myModal2" class="modal">
+        <div class="modal-content">
+            <h3>Estudiante</h3>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Escuela, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.Escuela, (SelectList)ViewBag.Escuelas, "Seleccione una escuela", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Escuela, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Codigo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Codigo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Codigo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <button type="button" Text="Guardar" onClick="closeModal2()" class="btn-primary" style="margin-left: -60px; margin-top: 0px; font-size: 15px;">Guardar</button>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-1 col-md-1">
+            <input type="submit" value="Agregar" class="btn btn-info" style="margin-top: 12px;" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Cancelar", "Index", new { }, new { @class = "btn btn-warning" })
+</div>
+
+<style>
+    /* Estilos para el modal */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 30%;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+</style>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            $('#usu_vcTipo').change(function () {
+                var selectedValue = $(this).val();
+                if (selectedValue === 'Asistente de empresa') {
+                    $('#openFormButton').show();
+                    $('#openFormButton2').hide();
+                } else if (selectedValue === 'Estudiante') {
+                    $('#openFormButton2').show();
+                    $('#openFormButton').hide();
+                }
+                else {
+                    $('#openFormButton').hide();
+                    $('#openFormButton2').hide();
+                }
+            });
+        });
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+            document.getElementById("myModal").style.marginLeft = 5;
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            var modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        function openModal2() {
+            document.getElementById("myModal2").style.display = "block";
+        }
+
+        function closeModal2() {
+            document.getElementById("myModal2").style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            var modal = document.getElementById("myModal2");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+}
