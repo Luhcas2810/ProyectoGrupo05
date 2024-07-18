@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace SIPSProyecto.Controllers
 {
-    [ValidarSesion]
     public class LoginController : Controller
     {
         // GET: Login

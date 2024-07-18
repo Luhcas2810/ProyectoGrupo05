@@ -1,52 +1,44 @@
 ﻿using SIPSProyecto.Models;
-using SIPSProyecto.Permisos;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace SIPSProyecto.Controllers
 {
-    [ValidarSesion]
-    public class CoordinadorPracticasController : Controller
+    public class EmpresaController : Controller
     {
-        // GET: CoordinadorPracticas
-        public async Task<ActionResult> Index(List<CoordinadorPracticas> coordinador)
+        // GET: Empresa
+        public ActionResult Index()
         {
-            using (DBModels contexto = new DBModels())
-            {
-                if (coordinador != null)
-                {
-                    return View(coordinador);
-                }
-                return View(await contexto.CoordinadorPracticas.ToListAsync());
-            }
+            return View();
         }
 
-        // GET: CoordinadorPracticas/Details/5
+        // GET: Empresa/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: CoordinadorPracticas/Create
+        // GET: Empresa/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CoordinadorPracticas/Create
+        // POST: Empresa/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Empresa empresa)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                using (DBModels context = new DBModels())
+                {
+                    context.Empresa.Add(empresa);
+                    context.SaveChanges();
+                }
+                return RedirectToAction("Create", "Usuario");
             }
             catch
             {
@@ -54,13 +46,13 @@ namespace SIPSProyecto.Controllers
             }
         }
 
-        // GET: CoordinadorPracticas/Edit/5
+        // GET: Empresa/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: CoordinadorPracticas/Edit/5
+        // POST: Empresa/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -76,13 +68,13 @@ namespace SIPSProyecto.Controllers
             }
         }
 
-        // GET: CoordinadorPracticas/Delete/5
+        // GET: Empresa/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: CoordinadorPracticas/Delete/5
+        // POST: Empresa/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
