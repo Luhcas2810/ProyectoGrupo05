@@ -16,9 +16,9 @@ namespace SIPSProyecto.Controllers
         // GET: Incidencia
         public async Task<ActionResult> Index(List<Incidencia> incidencias)
         {
-            using(DBModels contexto = new DBModels())
+            using (DBModels contexto = new DBModels())
             {
-                if(incidencias != null)
+                if (incidencias != null)
                 {
                     return View(incidencias);
                 }
@@ -35,11 +35,11 @@ namespace SIPSProyecto.Controllers
         // GET: Incidencia/Create
         public ActionResult Create(Incidencia incidencia)
         {
-            if(incidencia == null)
+            if (incidencia == null)
             {
                 return View();
             }
-            using(DBModels context = new DBModels())
+            using (DBModels context = new DBModels())
             {
                 var administradores = context.Administrador.Select(e => new
                 {
@@ -76,7 +76,7 @@ namespace SIPSProyecto.Controllers
         {
             try
             {
-                using(DBModels context = new DBModels())
+                using (DBModels context = new DBModels())
                 {
                     var incidencia = await context.Incidencia.FirstOrDefaultAsync(x => x.inc_iCodigo == id);
                     incidencia.estado = "Resuelto";
