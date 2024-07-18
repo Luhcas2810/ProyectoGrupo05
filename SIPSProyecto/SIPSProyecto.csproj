@@ -291,12 +291,12 @@
     <Content Include="Views\Incidencia\Index.cshtml" />
     <Content Include="Views\Incidencia\Create.cshtml" />
     <Content Include="Views\Usuario\Details.cshtml" />
+    <Content Include="Views\Estudiante\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
     <Folder Include="Views\AsistenteEmpresa\" />
-    <Folder Include="Views\Estudiante\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
