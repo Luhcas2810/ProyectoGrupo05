@@ -1,0 +1,43 @@
+﻿@model IEnumerable<SIPSProyecto.Models.Incidencia>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Administrador
+        </th>
+        <th>
+            Descripcion
+        </th>
+        <th>
+            Estado
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => (item.Administrador.Usuario.usu_vcNombres + " " + item.Administrador.Usuario.usu_vcApellidos))
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.inc_txDescripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.ActionLink("Resolver", "Resolver", new { id=item.inc_iCodigo }, new { @class = "btn btn-success" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -17,6 +17,7 @@ namespace SIPSProyecto.Models
         public int inc_iCodigo { get; set; }
         public Nullable<int> adm_iCodigo { get; set; }
         public string inc_txDescripcion { get; set; }
+        public string estado { get; set; }
     
         public virtual Administrador Administrador { get; set; }
     }
