@@ -4,21 +4,19 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/Content/indexAdminStyles.css">
+</head>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<h2>Incidencias del Sistema</h2>
+<hr class="divider">
+<table class="student-table">
     <tr>
         <th>
             Administrador
         </th>
         <th>
             Descripcion
-        </th>
-        <th>
-            Estado
         </th>
         <th></th>
     </tr>
@@ -27,16 +25,14 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => (item.Administrador.Usuario.usu_vcNombres + " " + item.Administrador.Usuario.usu_vcApellidos))
+                @Html.DisplayFor(modelItem => item.Nombre)
+
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.inc_txDescripcion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.estado)
-            </td>
-            <td>
-                @Html.ActionLink("Resolver", "Resolver", new { id = item.inc_iCodigo }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Resuelto", "Delete", new { id = item.inc_iCodigo }, new { @class = "btn btn-success" })
             </td>
         </tr>
     }

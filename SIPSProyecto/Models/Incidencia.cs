@@ -17,8 +17,30 @@ namespace SIPSProyecto.Models
         public int inc_iCodigo { get; set; }
         public Nullable<int> adm_iCodigo { get; set; }
         public string inc_txDescripcion { get; set; }
-        public string estado { get; set; }
-    
+
+        private string nombre;
+
+        public string Nombre
+        {
+            get
+            {
+                using(DBModels contexto = new DBModels())
+                {
+                    Administrador administrador = contexto.Administrador.Find(adm_iCodigo);
+                    Usuario usuario = contexto.Usuario.Find(administrador.usu_iCodigo);
+                    nombre = usuario.usu_vcNombres + " " + usuario.usu_vcApellidos;
+                    return nombre;
+                }
+            }
+            set
+            {
+                nombre = value;
+            }
+        }
+
+
+
+
         public virtual Administrador Administrador { get; set; }
     }
 }

@@ -46,12 +46,11 @@
         <th>
             Tipo
         </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
+        <tr onclick="redirectTo('@Url.Action("Details", "Usuario", new { id = item.usu_iCodigo })')">
             <td>
                 @Html.DisplayFor(modelItem => item.usu_vcNombres)
             </td>
@@ -64,16 +63,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.usu_vcTipo)
             </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.usu_iCodigo }, new { @class = "btn btn-warning" }) |
-                @Html.ActionLink("Detalle", "Details", new { id = item.usu_iCodigo }, new { @class = "btn btn-primary" }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.usu_iCodigo }, new { @class = "btn btn-danger" })
-            </td>
         </tr>
     }
 
 </table>
-
+<script>
+    function redirectTo(url) {
+        window.location.href = url;
+    }
+</script>
 
 <p>
     @Html.ActionLink("Agregar usuario", "Create", "", new { @class = "btn btn-success", @style = "margin-left: 0px; margin-top: 15px; font-size: 16px;" })

@@ -1,0 +1,45 @@
+﻿@model SIPSProyecto.Models.Usuario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<head>
+    <link href="~/Content/cus1_2styles.css" rel="stylesheet" />
+</head>
+
+<div>
+    <h3>@Model.usu_vcNombres @Model.usu_vcApellidos</h3>
+</div>
+
+<hr class="divider">
+<div class="container">
+    <div class="columna1">
+        <div class="form-group">
+            <label for="usu_vcNombres">Nombres: </label>
+            <input type="text" id="usu_vcNombres" name="usu_vcNombres" value="@Model.usu_vcNombres" disabled>
+        </div>
+        <div class="form-group">
+            <label for="usu_vcApellidos">Apellidos: </label>
+            <input type="text" id="usu_vcApellidos" name="usu_vcApellidos" value="@Model.usu_vcApellidos" disabled>
+        </div>
+    </div>
+    <div class="columna2">
+        <div class="form-group">
+            <label for="usu_vcCorreo">Correo: </label>
+            <input type="text" id="usu_vcCorreo" name="usu_vcCorreo" value="@Model.usu_vcCorreo" disabled>
+        </div>
+    </div>
+    <script>
+        function redirectToEdit(id) {
+            window.location.href = '@Url.Action("Edit", "Usuario")?id=' + id;
+        }
+        function redirecttoDelete(id) {
+            window.location.href = '@Url.Action("Delete", "Usuario")?id=' + id;
+        }
+    </script>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new {  id = Model.usu_iCodigo }, new { @class = "btn btn-info", @style = "margin-left: 110px; margin-top: 10px; font-size: 18px;" }) 
+    @Html.ActionLink("Eliminar", "Delete", new {  id = Model.usu_iCodigo }, new { @class = "btn btn-warning", @style = "margin-left: 10px; margin-top: 10px; font-size: 18px;" }) 
+</p>

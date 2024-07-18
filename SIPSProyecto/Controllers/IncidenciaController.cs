@@ -59,7 +59,6 @@ namespace SIPSProyecto.Controllers
             {
                 using (DBModels context = new DBModels())
                 {
-                    incidencia.estado = "No resuelto";
                     context.Incidencia.Add(incidencia);
                     context.SaveChanges();
                 }
@@ -68,28 +67,6 @@ namespace SIPSProyecto.Controllers
             catch
             {
                 return View();
-            }
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Resolver(int id)
-        {
-            try
-            {
-                using (DBModels context = new DBModels())
-                {
-                    var incidencia = await context.Incidencia.FirstOrDefaultAsync(x => x.inc_iCodigo == id);
-                    incidencia.estado = "Resuelto";
-                    if (incidencia == null)
-                    {
-                        return HttpNotFound();
-                    }
-                    return RedirectToAction("Index");
-                }
-            }
-            catch
-            {
-                return RedirectToAction("Index");
             }
         }
 
@@ -116,9 +93,26 @@ namespace SIPSProyecto.Controllers
         }
 
         // GET: Incidencia/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            try
+            {
+                using (DBModels context = new DBModels())
+                {
+                    var incidencia = await context.Incidencia.FirstOrDefaultAsync(x => x.inc_iCodigo == id);
+                    if (incidencia == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    context.Incidencia.Remove(incidencia);
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         // POST: Incidencia/Delete/5
