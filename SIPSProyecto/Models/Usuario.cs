@@ -31,8 +31,8 @@ namespace SIPSProyecto.Models
         public string usu_vcContrasena { get; set; }
         public string usu_vcTipo { get; set; }
         public string confirmarContrasenia { get; set; }
-        public string Empresa { get; set; }
-        public string Escuela { get; set; }
+        public int Empresa { get; set; }
+        public int Escuela { get; set; }
         public string Codigo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
