@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBModels.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Administrador">
           <Key>
             <PropertyRef Name="adm_iCodigo" />
@@ -103,6 +103,8 @@
           <Property Name="inc_iCodigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="adm_iCodigo" Type="int" />
           <Property Name="inc_txDescripcion" Type="text" />
+          <Property Name="inc_vcTipo" Type="varchar" MaxLength="50" />
+          <Property Name="usu_iCodigo" Type="int" />
         </EntityType>
         <EntityType Name="InformeDesempeno">
           <Key>
@@ -349,6 +351,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Incidencia_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Incidencia" Type="Self.Incidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usu_iCodigo" />
+            </Principal>
+            <Dependent Role="Incidencia">
+              <PropertyRef Name="usu_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_InformeDesempeno_CoordinadorPracticas">
           <End Role="CoordinadorPracticas" Type="Self.CoordinadorPracticas" Multiplicity="0..1" />
           <End Role="InformeDesempeno" Type="Self.InformeDesempeno" Multiplicity="*" />
@@ -445,7 +459,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBModelsStoreContainer">
+        <EntityContainer Name="DbModelStoreContainer">
           <EntitySet Name="Administrador" EntityType="Self.Administrador" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AsistenteEmpresa" EntityType="Self.AsistenteEmpresa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Competencia" EntityType="Self.Competencia" Schema="dbo" store:Type="Tables" />
@@ -525,6 +539,10 @@
             <End Role="Administrador" EntitySet="Administrador" />
             <End Role="Incidencia" EntitySet="Incidencia" />
           </AssociationSet>
+          <AssociationSet Name="FK_Incidencia_Usuario" Association="Self.FK_Incidencia_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Incidencia" EntitySet="Incidencia" />
+          </AssociationSet>
           <AssociationSet Name="FK_InformeDesempeno_CoordinadorPracticas" Association="Self.FK_InformeDesempeno_CoordinadorPracticas">
             <End Role="CoordinadorPracticas" EntitySet="CoordinadorPracticas" />
             <End Role="InformeDesempeno" EntitySet="InformeDesempeno" />
@@ -562,7 +580,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DBModels" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Administrador">
           <Key>
             <PropertyRef Name="adm_iCodigo" />
@@ -693,7 +711,10 @@
           <Property Name="inc_iCodigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="adm_iCodigo" Type="Int32" />
           <Property Name="inc_txDescripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="inc_vcTipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usu_iCodigo" Type="Int32" />
           <NavigationProperty Name="Administrador" Relationship="Self.FK_Incidencia_Administrador" FromRole="Incidencia" ToRole="Administrador" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Incidencia_Usuario" FromRole="Incidencia" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="InformeDesempeno">
           <Key>
@@ -772,6 +793,7 @@
           <NavigationProperty Name="AsistenteEmpresa" Relationship="Self.FK_AsistenteEmpresa_Usuario" FromRole="Usuario" ToRole="AsistenteEmpresa" />
           <NavigationProperty Name="CoordinadorPracticas" Relationship="Self.FK_CoordinadorPracticas_Usuario" FromRole="Usuario" ToRole="CoordinadorPracticas" />
           <NavigationProperty Name="Estudiante" Relationship="Self.FK_Estudiante_Usuario" FromRole="Usuario" ToRole="Estudiante" />
+          <NavigationProperty Name="Incidencia" Relationship="Self.FK_Incidencia_Usuario" FromRole="Usuario" ToRole="Incidencia" />
         </EntityType>
         <Association Name="FK_Administrador_Usuario">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
@@ -1049,7 +1071,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SIPSProyectoEntities" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK_Incidencia_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+          <End Role="Incidencia" Type="Self.Incidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="usu_iCodigo" />
+            </Principal>
+            <Dependent Role="Incidencia">
+              <PropertyRef Name="usu_iCodigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBModels" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Administrador" EntityType="Self.Administrador" />
           <EntitySet Name="AsistenteEmpresa" EntityType="Self.AsistenteEmpresa" />
           <EntitySet Name="Competencia" EntityType="Self.Competencia" />
@@ -1161,15 +1195,19 @@
             <End Role="Progreso" EntitySet="Progreso" />
             <End Role="Evaluacion" EntitySet="Evaluacion" />
           </AssociationSet>
+          <AssociationSet Name="FK_Incidencia_Usuario" Association="Self.FK_Incidencia_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Incidencia" EntitySet="Incidencia" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBModelsStoreContainer" CdmEntityContainer="SIPSProyectoEntities">
+        <EntityContainerMapping StorageEntityContainer="DbModelStoreContainer" CdmEntityContainer="DBModels">
           <EntitySetMapping Name="Administrador">
-            <EntityTypeMapping TypeName="DBModels.Administrador">
+            <EntityTypeMapping TypeName="DbModel.Administrador">
               <MappingFragment StoreEntitySet="Administrador">
                 <ScalarProperty Name="adm_iCodigo" ColumnName="adm_iCodigo" />
                 <ScalarProperty Name="usu_iCodigo" ColumnName="usu_iCodigo" />
@@ -1177,7 +1215,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AsistenteEmpresa">
-            <EntityTypeMapping TypeName="DBModels.AsistenteEmpresa">
+            <EntityTypeMapping TypeName="DbModel.AsistenteEmpresa">
               <MappingFragment StoreEntitySet="AsistenteEmpresa">
                 <ScalarProperty Name="ase_iCodigo" ColumnName="ase_iCodigo" />
                 <ScalarProperty Name="usu_iCodigo" ColumnName="usu_iCodigo" />
@@ -1186,7 +1224,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Competencia">
-            <EntityTypeMapping TypeName="DBModels.Competencia">
+            <EntityTypeMapping TypeName="DbModel.Competencia">
               <MappingFragment StoreEntitySet="Competencia">
                 <ScalarProperty Name="com_iCodigo" ColumnName="com_iCodigo" />
                 <ScalarProperty Name="est_iCodigo" ColumnName="est_iCodigo" />
@@ -1195,7 +1233,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ContribucionEquipo">
-            <EntityTypeMapping TypeName="DBModels.ContribucionEquipo">
+            <EntityTypeMapping TypeName="DbModel.ContribucionEquipo">
               <MappingFragment StoreEntitySet="ContribucionEquipo">
                 <ScalarProperty Name="coe_iCodigo" ColumnName="coe_iCodigo" />
                 <ScalarProperty Name="est_iCodigo" ColumnName="est_iCodigo" />
@@ -1204,7 +1242,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Convenio">
-            <EntityTypeMapping TypeName="DBModels.Convenio">
+            <EntityTypeMapping TypeName="DbModel.Convenio">
               <MappingFragment StoreEntitySet="Convenio">
                 <ScalarProperty Name="con_iCodigo" ColumnName="con_iCodigo" />
                 <ScalarProperty Name="est_iCodigo" ColumnName="est_iCodigo" />
@@ -1217,7 +1255,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CoordinadorPracticas">
-            <EntityTypeMapping TypeName="DBModels.CoordinadorPracticas">
+            <EntityTypeMapping TypeName="DbModel.CoordinadorPracticas">
               <MappingFragment StoreEntitySet="CoordinadorPracticas">
                 <ScalarProperty Name="cpr_iCodigo" ColumnName="cpr_iCodigo" />
                 <ScalarProperty Name="usu_iCodigo" ColumnName="usu_iCodigo" />
@@ -1225,7 +1263,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Desafio">
-            <EntityTypeMapping TypeName="DBModels.Desafio">
+            <EntityTypeMapping TypeName="DbModel.Desafio">
               <MappingFragment StoreEntitySet="Desafio">
                 <ScalarProperty Name="des_id" ColumnName="des_id" />
                 <ScalarProperty Name="est_iCodigo" ColumnName="est_iCodigo" />
@@ -1234,7 +1272,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Empresa">
-            <EntityTypeMapping TypeName="DBModels.Empresa">
+            <EntityTypeMapping TypeName="DbModel.Empresa">
               <MappingFragment StoreEntitySet="Empresa">
                 <ScalarProperty Name="emp_iCodigo" ColumnName="emp_iCodigo" />
                 <ScalarProperty Name="emp_vcNombre" ColumnName="emp_vcNombre" />
@@ -1243,7 +1281,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Escuela">
-            <EntityTypeMapping TypeName="DBModels.Escuela">
+            <EntityTypeMapping TypeName="DbModel.Escuela">
               <MappingFragment StoreEntitySet="Escuela">
                 <ScalarProperty Name="esc_iCodigo" ColumnName="esc_iCodigo" />
                 <ScalarProperty Name="esc_vcNombre" ColumnName="esc_vcNombre" />
@@ -1251,7 +1289,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Estudiante">
-            <EntityTypeMapping TypeName="DBModels.Estudiante">
+            <EntityTypeMapping TypeName="DbModel.Estudiante">
               <MappingFragment StoreEntitySet="Estudiante">
                 <ScalarProperty Name="est_iCodigo" ColumnName="est_iCodigo" />
                 <ScalarProperty Name="usu_iCodigo" ColumnName="usu_iCodigo" />
@@ -1261,7 +1299,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Evaluacion">
-            <EntityTypeMapping TypeName="DBModels.Evaluacion">
+            <EntityTypeMapping TypeName="DbModel.Evaluacion">
               <MappingFragment StoreEntitySet="Evaluacion">
                 <ScalarProperty Name="eva_iCodigo" ColumnName="eva_iCodigo" />
                 <ScalarProperty Name="ase_iCodigo" ColumnName="ase_iCodigo" />
@@ -1271,16 +1309,18 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Incidencia">
-            <EntityTypeMapping TypeName="DBModels.Incidencia">
+            <EntityTypeMapping TypeName="DbModel.Incidencia">
               <MappingFragment StoreEntitySet="Incidencia">
                 <ScalarProperty Name="inc_iCodigo" ColumnName="inc_iCodigo" />
                 <ScalarProperty Name="adm_iCodigo" ColumnName="adm_iCodigo" />
                 <ScalarProperty Name="inc_txDescripcion" ColumnName="inc_txDescripcion" />
+                <ScalarProperty Name="inc_vcTipo" ColumnName="inc_vcTipo" />
+                <ScalarProperty Name="usu_iCodigo" ColumnName="usu_iCodigo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="InformeDesempeno">
-            <EntityTypeMapping TypeName="DBModels.InformeDesempeno">
+            <EntityTypeMapping TypeName="DbModel.InformeDesempeno">
               <MappingFragment StoreEntitySet="InformeDesempeno">
                 <ScalarProperty Name="ind_iCodigo" ColumnName="ind_iCodigo" />
                 <ScalarProperty Name="cpr_iCodigo" ColumnName="cpr_iCodigo" />
@@ -1291,7 +1331,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="InformePractica">
-            <EntityTypeMapping TypeName="DBModels.InformePractica">
+            <EntityTypeMapping TypeName="DbModel.InformePractica">
               <MappingFragment StoreEntitySet="InformePractica">
                 <ScalarProperty Name="inp_iCodigo" ColumnName="inp_iCodigo" />
                 <ScalarProperty Name="cpr_iCodigo" ColumnName="cpr_iCodigo" />
@@ -1302,7 +1342,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Logro">
-            <EntityTypeMapping TypeName="DBModels.Logro">
+            <EntityTypeMapping TypeName="DbModel.Logro">
               <MappingFragment StoreEntitySet="Logro">
                 <ScalarProperty Name="log_iCodigo" ColumnName="log_iCodigo" />
                 <ScalarProperty Name="est_iCodigo" ColumnName="est_iCodigo" />
@@ -1311,7 +1351,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Objetivo">
-            <EntityTypeMapping TypeName="DBModels.Objetivo">
+            <EntityTypeMapping TypeName="DbModel.Objetivo">
               <MappingFragment StoreEntitySet="Objetivo">
                 <ScalarProperty Name="obj_iCodigo" ColumnName="obj_iCodigo" />
                 <ScalarProperty Name="est_iCodigo" ColumnName="est_iCodigo" />
@@ -1320,7 +1360,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Progreso">
-            <EntityTypeMapping TypeName="DBModels.Progreso">
+            <EntityTypeMapping TypeName="DbModel.Progreso">
               <MappingFragment StoreEntitySet="Progreso">
                 <ScalarProperty Name="pro_iCodigo" ColumnName="pro_iCodigo" />
                 <ScalarProperty Name="con_iCodigo" ColumnName="con_iCodigo" />
@@ -1330,7 +1370,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tarea">
-            <EntityTypeMapping TypeName="DBModels.Tarea">
+            <EntityTypeMapping TypeName="DbModel.Tarea">
               <MappingFragment StoreEntitySet="Tarea">
                 <ScalarProperty Name="tar_iCodigo" ColumnName="tar_iCodigo" />
                 <ScalarProperty Name="est_iCodigo" ColumnName="est_iCodigo" />
@@ -1340,7 +1380,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuario">
-            <EntityTypeMapping TypeName="DBModels.Usuario">
+            <EntityTypeMapping TypeName="DbModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
                 <ScalarProperty Name="usu_iCodigo" ColumnName="usu_iCodigo" />
                 <ScalarProperty Name="usu_vcNombres" ColumnName="usu_vcNombres" />

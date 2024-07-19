@@ -21,6 +21,7 @@ namespace SIPSProyecto.Models
             this.AsistenteEmpresa = new HashSet<AsistenteEmpresa>();
             this.CoordinadorPracticas = new HashSet<CoordinadorPracticas>();
             this.Estudiante = new HashSet<Estudiante>();
+            this.Incidencia = new HashSet<Incidencia>();
         }
     
         public int usu_iCodigo { get; set; }
@@ -30,10 +31,10 @@ namespace SIPSProyecto.Models
         public string usu_vcContrasena { get; set; }
         public string usu_vcTipo { get; set; }
         public string confirmarContrasenia { get; set; }
-        public int Escuela { get; set; }
         public int Empresa { get; set; }
+        public int Escuela { get; set; }
         public string Codigo { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Administrador> Administrador { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -42,5 +43,7 @@ namespace SIPSProyecto.Models
         public virtual ICollection<CoordinadorPracticas> CoordinadorPracticas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Estudiante> Estudiante { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Incidencia> Incidencia { get; set; }
     }
 }

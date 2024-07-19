@@ -23,10 +23,17 @@
 @using (Html.BeginForm("Search", "Usuario"))
 {
     <div class="form-group">
-        @Html.TextBox("nombres_usu", null, new { @class = "TextBox", @placeholder = "Ingrese nombre de estudiante" })
-        @Html.TextBox("apellidos_usu", null, new { @class = "TextBox", @placeholder = "Ingrese apellido de estudiante" })
-        @Html.TextBox("correo_usu", null, new { @class = "TextBox", @placeholder = "Ingrese codigo de estudiante" })
-        @Html.TextBox("tipo_usu", null, new { @class = "TextBox", @placeholder = "Ingrese codigo de estudiante" })
+        @Html.TextBox("nombres_usu", null, new { @class = "TextBox", @placeholder = "Ingrese nombres" })
+        @Html.TextBox("apellidos_usu", null, new { @class = "TextBox", @placeholder = "Ingrese apellidos" })
+        @Html.TextBox("correo_usu", null, new { @class = "TextBox", @placeholder = "Ingrese correo" })
+        @Html.DropDownList("tipo_usu", new List<SelectListItem>
+                           {
+                               new SelectListItem { Text = "Ingrese tipo", Value = "", Selected = true },
+                               new SelectListItem { Text = "Administrador", Value = "Administrador" },
+                               new SelectListItem { Text = "Coordinador", Value = "Coordinador" },
+                               new SelectListItem { Text = "Asistente de empresa", Value = "Asistente de empresa" },
+                               new SelectListItem { Text = "Estudiante", Value = "Estudiante" }
+                           }, "Seleccione un tipo", new { @class = "TextBox", @style = "font-size: 16px;" })
         <button type="submit"></button>
     </div>
 }

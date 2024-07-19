@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\jjvc2\OneDrive\Escritorio\Proyecto DSW\SIPSProyecto\SIPSProyecto\SIPSProyecto\Models\DBModels.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\jjvc2\OneDrive\Escritorio\Proyecto DSW\ProyectoGrupo05\ProyectoGrupo05\SIPSProyecto\Models\DBModels.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

@@ -70,6 +70,28 @@ namespace SIPSProyecto.Controllers
             }
         }
 
+        public async Task<ActionResult> Listo(int id)
+        {
+            try
+            {
+                using (DBModels context = new DBModels())
+                {
+                    var incidencia = await context.Incidencia.FirstOrDefaultAsync(x => x.inc_iCodigo == id);
+                    if (incidencia == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    incidencia.inc_txDescripcion = "(RESUELTO) - " + incidencia.inc_txDescripcion;
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
         // GET: Incidencia/Edit/5
         public ActionResult Edit(int id)
         {
@@ -93,25 +115,10 @@ namespace SIPSProyecto.Controllers
         }
 
         // GET: Incidencia/Delete/5
-        public async Task<ActionResult> Delete(int id)
+        public ActionResult Delete(int id)
         {
-            try
             {
-                using (DBModels context = new DBModels())
-                {
-                    var incidencia = await context.Incidencia.FirstOrDefaultAsync(x => x.inc_iCodigo == id);
-                    if (incidencia == null)
-                    {
-                        return HttpNotFound();
-                    }
-                    incidencia.inc_txDescripcion = "(RESUELTO) - " + incidencia.inc_txDescripcion;
-                    context.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-            }
-            catch
-            {
-                return RedirectToAction("Index");
+                return View();
             }
         }
 

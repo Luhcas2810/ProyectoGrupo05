@@ -16,7 +16,7 @@ namespace SIPSProyecto.Models
     public partial class DBModels : DbContext
     {
         public DBModels()
-            : base("name=SIPSProyectoEntities")
+            : base("name=DBModels")
         {
         }
     

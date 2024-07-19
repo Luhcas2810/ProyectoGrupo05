@@ -17,9 +17,9 @@ namespace SIPSProyecto.Models
         public int inc_iCodigo { get; set; }
         public Nullable<int> adm_iCodigo { get; set; }
         public string inc_txDescripcion { get; set; }
-
-        private string nombre;
-
+        public string inc_vcTipo { get; set; }
+        public Nullable<int> usu_iCodigo { get; set; }
+        public string nombre;
         public string Nombre
         {
             get
@@ -28,8 +28,7 @@ namespace SIPSProyecto.Models
                 {
                     Administrador administrador = contexto.Administrador.Find(adm_iCodigo);
                     Usuario usuario = contexto.Usuario.Find(administrador.usu_iCodigo);
-                    nombre = usuario.usu_vcNombres + " " + usuario.usu_vcApellidos;
-                    return nombre;
+                    return usuario.usu_vcNombres + " " + usuario.usu_vcApellidos;
                 }
             }
             set
@@ -37,10 +36,7 @@ namespace SIPSProyecto.Models
                 nombre = value;
             }
         }
-
-
-
-
         public virtual Administrador Administrador { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }
