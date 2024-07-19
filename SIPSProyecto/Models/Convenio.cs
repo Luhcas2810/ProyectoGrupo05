@@ -27,7 +27,24 @@ namespace SIPSProyecto.Models
         public Nullable<System.DateTime> con_dtFechaInicio { get; set; }
         public Nullable<System.DateTime> con_dtFechaFin { get; set; }
         public string con_vcPuesto { get; set; }
-    
+
+        public string nombreEmpresa;
+        public string NombreEmpresa
+        {
+            get
+            {
+                using (DBModels contexto = new DBModels())
+                {
+                    Empresa empresa = contexto.Empresa.Find(emp_iCodigo);
+                    return empresa.emp_vcNombre;
+                }
+            }
+            set
+            {
+                nombreEmpresa = value;
+            }
+        }
+
         public virtual CoordinadorPracticas CoordinadorPracticas { get; set; }
         public virtual Empresa Empresa { get; set; }
         public virtual Estudiante Estudiante { get; set; }

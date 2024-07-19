@@ -1,0 +1,74 @@
+﻿@model SIPSProyecto.Models.Convenio
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Convenio</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.con_iCodigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.con_iCodigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.est_iCodigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.est_iCodigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cpr_iCodigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cpr_iCodigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.emp_iCodigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emp_iCodigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.con_dtFechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.con_dtFechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.con_dtFechaFin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.con_dtFechaFin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.con_vcPuesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.con_vcPuesto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

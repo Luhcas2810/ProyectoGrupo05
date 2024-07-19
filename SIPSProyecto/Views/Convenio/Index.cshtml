@@ -1,0 +1,56 @@
+﻿@model IEnumerable<SIPSProyecto.Models.Convenio>
+
+@{
+    ViewBag.Title = "Index";
+}
+<head>
+    <link href="~/Content/cus2styles.css" rel="stylesheet" />
+</head>
+<h2>Mantener Informacion del Convenio</h2>
+
+<hr class="divider">
+<table class="convenio-table">
+    <tr>
+        <th>
+            Nombre del convenio
+        </th>
+        <th>
+            Empresa Involucrada
+        </th>
+        <th>
+            Fecha de Inicio
+        </th>
+        <th>
+            Fecha de término
+        </th>
+        <th>
+            Estado
+        </th>
+
+        @foreach (var item in Model)
+        {
+    <tr onclick="redirectTo('@Url.Action("Details", "Convenio", new { id = item.est_iCodigo })')">
+        <td>
+            @Html.DisplayFor(modelItem => item.con_vcPuesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.emp_iCodigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.con_dtFechaInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.con_dtFechaFin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.est_iCodigo)
+        </td>
+    </tr>
+    }
+
+</table>
+<script>
+    function redirectTo(url) {
+        window.location.href = url;
+    }
+</script>

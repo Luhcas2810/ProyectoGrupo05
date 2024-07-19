@@ -130,6 +130,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AsistenteEmpresaController.cs" />
+    <Compile Include="Controllers\ConvenioController.cs" />
     <Compile Include="Controllers\CoordinadorPracticasController.cs" />
     <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\EstudianteController.cs" />
@@ -292,6 +293,9 @@
     <Content Include="Views\Incidencia\Create.cshtml" />
     <Content Include="Views\Usuario\Details.cshtml" />
     <Content Include="Views\Estudiante\Index.cshtml" />
+    <Content Include="Views\Estudiante\Details.cshtml" />
+    <Content Include="Views\Convenio\Index.cshtml" />
+    <Content Include="Views\Convenio\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

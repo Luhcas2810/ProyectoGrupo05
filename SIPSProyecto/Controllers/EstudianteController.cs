@@ -30,11 +30,11 @@ namespace SIPSProyecto.Controllers
         }
 
         // GET: Estudiante/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
             using (DBModels contexto = new DBModels())
             {
-                var estudiante = contexto.Estudiante.FirstOrDefault(x => x.est_iCodigo == id);
+                var estudiante = await contexto.Estudiante.FirstOrDefaultAsync(x => x.est_iCodigo == id);
                 if (estudiante == null)
                 {
                     return HttpNotFound();
