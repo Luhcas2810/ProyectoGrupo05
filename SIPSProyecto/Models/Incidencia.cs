@@ -19,6 +19,8 @@ namespace SIPSProyecto.Models
         public string inc_txDescripcion { get; set; }
         public string inc_vcTipo { get; set; }
         public Nullable<int> usu_iCodigo { get; set; }
+        public string inc_vcCodigo { get; set; }
+        public string inc_txResolucion { get; set; }
         public string nombre;
         public string Nombre
         {
@@ -36,6 +38,7 @@ namespace SIPSProyecto.Models
                 nombre = value;
             }
         }
+    
         public virtual Administrador Administrador { get; set; }
         public virtual Usuario Usuario { get; set; }
     }
