@@ -87,7 +87,7 @@ namespace SIPSProyecto.Controllers
                     if (estudiante != null)
                     {
                         // Actualizar las propiedades del estudiante con los valores del formulario
-                        estudiante.est_vcCodigo = collection["codigo"];
+                        estudiante.est_vcCodigo = collection["est_vcCodigo"];
 
                         // Marcar la entidad como modificada
                         context.Entry(estudiante).State = EntityState.Modified;
