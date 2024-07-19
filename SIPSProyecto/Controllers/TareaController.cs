@@ -2,7 +2,9 @@
 using SIPSProyecto.Permisos;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -24,33 +26,45 @@ namespace SIPSProyecto.Controllers
         }
 
         // GET: Tarea/Create
-        public ActionResult Create(Tarea actividad)
+        public ActionResult Create(Tarea tarea)
         {
             using (DBModels context = new DBModels())
             {
-                if (actividad == null)
-                {
-                    return View();
-                }
                 var estudiantes = context.Estudiante.Select(e => new
                 {
                     est_iCodigo = e.est_iCodigo,
                     est_vcCodigo = e.est_vcCodigo
                 }).ToList();
                 ViewBag.Estudiantes = new SelectList(estudiantes, "est_iCodigo", "est_vcCodigo");
-                return View(actividad);
+                if (tarea == null)
+                {
+                    return View();
+                }
+               
+                return View(tarea);
             }
         }
 
         // POST: Tarea/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Tarea tarea, FormCollection collection)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                using (DBModels context = new DBModels())
+                {
+                    tarea.est_iCodigo =Convert.ToInt32( collection["id"]);
+                    var estudiantes = context.Estudiante.Select(e => new
+                    {
+                        est_iCodigo = e.est_iCodigo,
+                        est_vcCodigo = e.est_vcCodigo
+                    }).ToList();
+                    ViewBag.Estudiantes = new SelectList(estudiantes, "est_iCodigo", "est_vcCodigo");
+                    tarea.tar_vcNotaObtenida = "NC";
+                    context.Tarea.Add(tarea);
+                    context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             catch
             {
@@ -100,6 +114,34 @@ namespace SIPSProyecto.Controllers
             {
                 return View();
             }
+        }
+
+        public  async Task<ActionResult> Search(int codigo_est)
+        {
+            try
+            {
+
+                using(DBModels contexto = new DBModels())
+                {
+                    var estudiantes = contexto.Estudiante.Select(e => new
+                    {
+                        est_iCodigo = e.est_iCodigo,
+                        est_vcCodigo = e.est_vcCodigo
+                    }).ToList();
+                    ViewBag.Estudiantes = new SelectList(estudiantes, "est_iCodigo", "est_vcCodigo");
+                    var query = contexto.Estudiante.AsQueryable();
+                    query = query.Where(x => x.est_iCodigo == codigo_est);
+                    Estudiante estudiante = await query.FirstOrDefaultAsync();
+                    Tarea tarea = new Tarea();
+                    tarea.est_iCodigo = estudiante.est_iCodigo;
+                    return View("Create",tarea);
+                }
+            }
+            catch
+            {
+                return View();
+            }
+            
         }
     }
 }

@@ -18,7 +18,51 @@ namespace SIPSProyecto.Models
         public Nullable<int> est_iCodigo { get; set; }
         public string tar_vcDescripcion { get; set; }
         public string tar_vcNotaObtenida { get; set; }
-    
+
+        public string nombre;
+        public string Nombre
+        {
+            get
+            {
+                using (DBModels contexto = new DBModels())
+                {
+                    Estudiante estudiante = contexto.Estudiante.Find(est_iCodigo);
+                    if(estudiante != null)
+                    {
+                        Usuario usuario = contexto.Usuario.Find(estudiante.usu_iCodigo);
+                        return usuario.usu_vcNombres;
+                    }
+                    return null;
+                }
+                
+            }
+            set
+            {
+                nombre = value;
+            }
+        }
+        public string apellido;
+        public string Apellido
+        {
+            get
+            {
+                using (DBModels contexto = new DBModels())
+                {
+                    Estudiante estudiante = contexto.Estudiante.Find(est_iCodigo);
+                    if(estudiante != null)
+                    {
+                        Usuario usuario = contexto.Usuario.Find(estudiante.usu_iCodigo);
+                        return usuario.usu_vcApellidos;
+                    }
+                    return null; 
+                }
+
+            }
+            set
+            {
+                apellido = value;
+            }
+        }
         public virtual Estudiante Estudiante { get; set; }
     }
 }
