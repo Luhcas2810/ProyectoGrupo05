@@ -137,5 +137,44 @@ namespace SIPSProyecto.Controllers
                 return View();
             }
         }
+        public async Task<ActionResult> Search(string nombres_est, string apellidos_est, string codigo_est)
+        {
+            if (String.IsNullOrWhiteSpace(nombres_est) && String.IsNullOrWhiteSpace(apellidos_est) && String.IsNullOrWhiteSpace(codigo_est))
+            {
+                return RedirectToAction("Index");
+            }
+            List<Estudiante> ListaEstudiante = new List<Estudiante>();
+            try
+            {
+                using (DBModels contexto = new DBModels())
+                {
+                    var query = from e in contexto.Estudiante
+                                join c in contexto.Usuario on e.usu_iCodigo equals c.usu_iCodigo select new { e, c };
+                    if (!string.IsNullOrWhiteSpace(nombres_est))
+                    {
+                        query = query.Where(f => f.c.usu_vcNombres.Contains(nombres_est));
+                    }
+                    if (!string.IsNullOrWhiteSpace(apellidos_est))
+                    {
+                        query = query.Where(f => f.c.usu_vcApellidos.Contains(apellidos_est));
+                    }
+                    if (!string.IsNullOrWhiteSpace(codigo_est))
+                    {
+                        query = query.Where(f => f.e.est_vcCodigo.Contains(codigo_est));
+                    }
+                    ListaEstudiante = await query.Select(f => f.e).ToListAsync();
+                    if (ListaEstudiante.Count == 0)
+                    {
+                        TempData["AlertMessage"] = "No existen esos datos";
+                        return RedirectToAction("Index");
+                    }
+                }
+                return View("Index", ListaEstudiante);
+            }
+            catch
+            {
+                return RedirectToAction("Index");
+            }
+        }
     }
 }

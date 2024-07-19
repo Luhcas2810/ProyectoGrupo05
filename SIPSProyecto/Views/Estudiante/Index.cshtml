@@ -8,7 +8,26 @@
     <link href="~/Content/indexAdminStyles.css" rel="stylesheet" />
 </head>
 <h2>Mantener Informacion del alumno</h2>
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-warning">
+        @TempData["AlertMessage"]
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+    </div>
 
+}
+@using (Html.BeginForm("Search", "Estudiante"))
+{
+    <div class="form-group">
+        @Html.TextBox("nombres_est", null, new { @class = "TextBox", @placeholder = "Ingrese nombres" })
+        @Html.TextBox("apellidos_est", null, new { @class = "TextBox", @placeholder = "Ingrese apellidos" })
+        @Html.TextBox("codigo_est", null, new { @class = "TextBox", @placeholder = "Ingrese codigo" })
+        <button type="submit"></button>
+    </div>
+}
+<hr class="divider">
 <table class="student-table">
     <tr>
         <th>
@@ -22,19 +41,20 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
-<tr onclick="redirectTo('@Url.Action("Details", "Estudiante", new { id = item.esc_iCodigo })')">
-    <td>
-        @Html.DisplayFor(modelItem => item.est_vcCodigo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Nombre)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Apellido)
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr onclick="redirectTo('@Url.Action("Details", "Estudiante", new { id = item.esc_iCodigo })')">
+            <td>
+                @Html.DisplayFor(modelItem => item.est_vcCodigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+        </tr>
+    }
 
 </table>
 <script>
