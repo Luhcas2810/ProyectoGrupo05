@@ -104,7 +104,7 @@ namespace SIPSProyecto.Controllers
                     {
                         return HttpNotFound();
                     }
-                    context.Incidencia.Remove(incidencia);
+                    incidencia.inc_txDescripcion = "(RESUELTO) - " + incidencia.inc_txDescripcion;
                     context.SaveChanges();
                     return RedirectToAction("Index");
                 }
