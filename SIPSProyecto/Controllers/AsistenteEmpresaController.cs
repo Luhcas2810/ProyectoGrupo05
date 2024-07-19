@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace SIPSProyecto.Controllers
 {
+    [ValidarSesion]
     public class AsistenteEmpresaController : Controller
     {
         // GET: AsistenteEmpresa

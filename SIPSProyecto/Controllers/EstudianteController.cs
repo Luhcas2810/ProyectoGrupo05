@@ -1,4 +1,5 @@
 ﻿using SIPSProyecto.Models;
+using SIPSProyecto.Permisos;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace SIPSProyecto.Controllers
 {
+    [ValidarSesion]
     public class EstudianteController : Controller
     {
         // GET: Estudiante

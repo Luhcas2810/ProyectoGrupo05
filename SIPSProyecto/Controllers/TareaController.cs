@@ -1,4 +1,5 @@
 ﻿using SIPSProyecto.Models;
+using SIPSProyecto.Permisos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace SIPSProyecto.Controllers
 {
+    [ValidarSesion]
     public class TareaController : Controller
     {
         // GET: Tarea
