@@ -32,7 +32,40 @@ namespace SIPSProyecto.Models
         public Nullable<int> usu_iCodigo { get; set; }
         public Nullable<int> esc_iCodigo { get; set; }
         public string est_vcCodigo { get; set; }
-    
+
+        public string nombre;
+        public string Nombre
+        {
+            get
+            {
+                using (DBModels contexto = new DBModels())
+                {
+                    Usuario usuario = contexto.Usuario.Find(usu_iCodigo);
+                    return usuario.usu_vcNombres;
+                }
+            }
+            set
+            {
+                nombre = value;
+            }
+        }
+
+        public string apellido;
+        public string Apellido
+        {
+            get
+            {
+                using (DBModels contexto = new DBModels())
+                {
+                    Usuario usuario = contexto.Usuario.Find(usu_iCodigo);
+                    return usuario.usu_vcApellidos;
+                }
+            }
+            set
+            {
+                apellido = value;
+            }
+        }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Competencia> Competencia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,35 +1,31 @@
 ﻿@model IEnumerable<SIPSProyecto.Models.Estudiante>
 
+
 @{
     ViewBag.Title = "Index";
 }
+<head>
+    <link href="~/Content/indexAdminStyles.css" rel="stylesheet" />
+</head>
+<h2>Mantener Informacion del alumno</h2>
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table class="student-table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.est_iCodigo)
+            Codigo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.usu_iCodigo)
+            Nombre
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.esc_iCodigo)
+            Apellido
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.est_vcCodigo)
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
-<tr>
+<tr onclick="redirectTo('@Url.Action("Details", "Estudiante", new { id = item.esc_iCodigo })')">
     <td>
-        @Html.DisplayFor(modelItem => item.est_iCodigo)
+        @Html.DisplayFor(modelItem => item.est_vcCodigo)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Nombre)
@@ -37,18 +33,12 @@
     <td>
         @Html.DisplayFor(modelItem => item.Apellido)
     </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.esc_iCodigo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.est_vcCodigo)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new {  id=item.est_iCodigo }) |
-        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-    </td>
 </tr>
 }
 
 </table>
+<script>
+    function redirectTo(url) {
+        window.location.href = url;
+    }
+</script>

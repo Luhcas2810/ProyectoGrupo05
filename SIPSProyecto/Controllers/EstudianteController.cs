@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,7 +12,7 @@ namespace SIPSProyecto.Controllers
     public class EstudianteController : Controller
     {
         // GET: Estudiante
-        public ActionResult Index(List<Estudiante> estudiantes)
+        public async Task<ActionResult> Index(List<Estudiante> estudiantes)
         {
             using (DBModels contexto = new DBModels())
             {
@@ -21,7 +22,7 @@ namespace SIPSProyecto.Controllers
                 }
                 else
                 {
-                    return View(contexto.Estudiante.ToList());
+                    return View(await contexto.Estudiante.ToListAsync());
                 }
             }
         }
