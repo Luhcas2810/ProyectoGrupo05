@@ -22,9 +22,9 @@
         <ul>
             @if (Session["tipo"].ToString() == "Administrador")
             {
-                <li><a href="~/Usuario/Details/@Session["id"]">Perfil</a></li>
                 <li><a href="~/Usuario/Index">Usuarios del sistema</a></li>
                 <li><a href="~/Incidencia/Index">Incidencias del sitema</a></li>
+                <li><a href="~/Usuario/Details/@Session["id"]">Perfil</a></li>
             }
             @if (Session["tipo"].ToString() == "Coordinador")
             {
@@ -33,8 +33,8 @@
             }
             @if (Session["tipo"].ToString() == "Asistente de empresa")
             {
+                <li><a href="~/Incidencia/Create">Notificar incidencia</a></li>
                 <li><a href="~/Convenio/Index">Consultar datos del convenio</a></li>
-                <li><a href="~/Incidencia/Index">Incidencias del sitema</a></li>
             }
             @if (Session["tipo"].ToString() == "Estudiante")
             {

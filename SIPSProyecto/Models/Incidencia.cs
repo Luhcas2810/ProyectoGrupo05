@@ -38,6 +38,26 @@ namespace SIPSProyecto.Models
                 nombre = value;
             }
         }
+        public string nombreusuario;
+        public string NombreUsuario
+        {
+            get
+            {
+                using (DBModels contexto = new DBModels())
+                {
+                    Usuario usuario = contexto.Usuario.Find(usu_iCodigo);
+                    if(usuario == null)
+                    {
+                        return "";
+                    }
+                    return usuario.usu_vcNombres + " " + usuario.usu_vcApellidos;
+                }
+            }
+            set
+            {
+                nombreusuario = value;
+            }
+        }
 
         public virtual Administrador Administrador { get; set; }
         public virtual Usuario Usuario { get; set; }

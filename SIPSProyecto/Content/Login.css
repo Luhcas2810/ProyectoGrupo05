@@ -3,24 +3,74 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
-    background: #60a3bc !important;
+    background: #F4D7D1 !important;
 }
 
+.sidebar {
+    background-image: url('../fonts/imagenes/img_login.jpg');
+    opacity: 0.7;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 520px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 50px;
+}
+
+    .sidebar h2 {
+        color: white;
+        text-align: right;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        padding-right: 20px; /* Ajusta el espacio para la imagen */
+        font-size: 40px;
+        transform: translateY(-50px);
+        margin-top:5%;
+    }
+
+        .sidebar h2::after {
+            content: '';
+            display: inline-block;
+            background-image: url('../fonts/imagenes/Logo_UNMSM.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 50px; /* Tamaño más grande para la imagen */
+            height: 50px;
+            position: absolute;
+            right: 130px; /* Desplaza la imagen fuera del rango de la frase */
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+.log {
+    font: menu;
+    font-size: 160%;
+    text-align: right;
+    margin: -20px;
+    padding-top: 60px;
+    padding-right: 90px;
+}
+
+    .log p {
+        color: #7E7E7E;
+        font-size: 80%;
+        margin-top: 2%;
+    }
+
 .user_card {
-    height: 400px;
-    width: 350px;
-    margin-top: auto;
-    margin-bottom: auto;
-    background: #f39c12;
     position: relative;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 5px;
+    left: 400px;  /*Ajusta este valor para mover más a la derecha */
+    width: 35%;
+    height:52%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    margin-top: 50px;
 }
 
 .brand_logo_container {
@@ -42,7 +92,7 @@ html {
 }
 
 .form_container {
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .login_btn {

@@ -16,6 +16,11 @@ namespace SIPSProyecto.Controllers
             return View();
         }
 
+        public ActionResult Principal()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Login(Usuario usuario)
         {
@@ -28,6 +33,10 @@ namespace SIPSProyecto.Controllers
                     Session["usuario"] = usuario2;
                     Session["tipo"] = usuario2.usu_vcTipo;
                     Session["id"] = usuario2.usu_iCodigo;
+                    if(usuario2.usu_vcTipo == "Administrador")
+                    {
+                        return RedirectToAction("Index", "Usuario");
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 else

@@ -59,6 +59,10 @@ namespace SIPSProyecto.Controllers
             {
                 using (DBModels context = new DBModels())
                 {
+                    incidencia.usu_iCodigo = Convert.ToInt32(Session["id"]);
+                    incidencia.inc_vcTipo = "Sin resolver";
+                    incidencia.inc_vcCodigo = "I" + incidencia.inc_iCodigo;
+                    incidencia.inc_txResolucion = "Esperando resolución....";
                     context.Incidencia.Add(incidencia);
                     context.SaveChanges();
                 }
@@ -70,7 +74,7 @@ namespace SIPSProyecto.Controllers
             }
         }
 
-        public async Task<ActionResult> Listo(int id)
+        public async Task<ActionResult> Listo(int id, string resolucion)
         {
             try
             {
@@ -81,7 +85,10 @@ namespace SIPSProyecto.Controllers
                     {
                         return HttpNotFound();
                     }
-                    incidencia.inc_txDescripcion = "(RESUELTO) - " + incidencia.inc_txDescripcion;
+                    //incidencia.inc_txDescripcion = "(RESUELTO) - " + incidencia.inc_txDescripcion;
+                    incidencia.inc_vcTipo = "Resuelto";
+                    incidencia.inc_txResolucion = resolucion;
+                    context.Entry(incidencia).State = EntityState.Modified;
                     context.SaveChanges();
                     return RedirectToAction("Index");
                 }

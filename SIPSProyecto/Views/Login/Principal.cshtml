@@ -1,0 +1,69 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIPS</title>
+    <link rel="stylesheet" href="~/Content/principal.css">
+</head>
+<body>
+    <div id="inicio">
+        <div class="navbar">
+            <img src="~/fonts/imagenes/unmsm.png" alt="UNMSM Logo" class="logo">
+            <h1 class="logo">SIPS</h1>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a>
+                <li><a href="#quienes_somos">Quiénes somos</a>
+                <li><a href="#main-footer">Contáctanos</a>
+            </ul>
+        </div>
+    </div>
+    <header>
+        <div class="header-content">
+            <h2>Desarrollo de sistemas Web</h2>
+            <div class="line"></div>
+            <h1>SISTEMA DE SEGUIMIENTO DE PRÁCTICAS PREPROFESIONALES</h1>
+            <a href="~/Login/Login" class="ctn">Iniciar sesión</a>
+        </div>
+    </header>
+
+    <section id="quienes_somos">
+        <div class="title">
+            <h1>Quiénes somos</h1>
+            <div class="line"></div>
+        </div>
+        <div></div>
+        <div class="row">
+            <div class="col">
+                <h3>Misión</h3>
+                <p>Proporcionar una plataforma integral y eficiente que permita gestionar, supervisar y evaluar el progreso de las prácticas preprofesionales de los estudiantes de la Facultad de Ingeniería de Sistemas e Informática. SIPS busca mejorar la calidad de la formación académica y profesional de los estudiantes, facilitando la comunicación y coordinación entre estudiantes, tutores, coordinadores y empresas, asegurando el cumplimiento de los requisitos y estándares establecidos.</p>
+            </div><!-- col -->
+            <div class="col">
+                <h3>Visión</h3>
+                <p>Convertirse en una herramienta esencial y referente en la gestión de prácticas preprofesionales, reconocida por su eficacia, facilidad de uso y capacidad para mejorar la experiencia y formación de los estudiantes. SIPS aspira a contribuir significativamente al desarrollo de profesionales altamente capacitados, alineados con las demandas del mercado laboral y comprometidos con la excelencia y la innovación en el campo de la ingeniería de sistemas e informática.</p>
+            </div><!-- col -->
+        </div><!-- row -->
+    </section>
+    <div id="main-footer">
+        <div class="container">
+            <a href="mailto:sipsfisi@gmail.com">Contáctanos aqui</a>
+            <p>2024 Todos los derechos reservados</p>
+        </div> <!-- container -->
+    </div> <!-- main.footer -->
+
+
+    <script>
+        const menuBtn = document.querySelector('.menu-btn')
+        const navlinks = document.querySelector('.nav-links')
+        menuBtn.addEventListener('click',()=>{
+            navlinks.classList.toggle('mobile-menu')
+        })
+    </script>
+</body>
+</html>

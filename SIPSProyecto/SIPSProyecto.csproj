@@ -228,8 +228,10 @@
     <Content Include="Content\cus7styles.css" />
     <Content Include="Content\indexAdminStyles.css" />
     <Content Include="Content\Login.css" />
+    <Content Include="Content\principal.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\imagenes\fondo1.jpg" />
     <Content Include="fonts\imagenes\icono_buscar.png" />
     <Content Include="fonts\imagenes\icono_desplegable.png" />
     <Content Include="fonts\imagenes\icono_pass.png" />
@@ -237,6 +239,7 @@
     <Content Include="fonts\imagenes\img_login.jpg" />
     <Content Include="fonts\imagenes\logo2_unmsm.png" />
     <Content Include="fonts\imagenes\Logo_UNMSM.png" />
+    <Content Include="fonts\imagenes\unmsm.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Models\DBModels.Context.tt">
@@ -300,6 +303,7 @@
     <Content Include="Views\Tarea\Details.cshtml" />
     <Content Include="Views\Estudiante\Edit.cshtml" />
     <Content Include="Views\Convenio\Create.cshtml" />
+    <Content Include="Views\Login\Principal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

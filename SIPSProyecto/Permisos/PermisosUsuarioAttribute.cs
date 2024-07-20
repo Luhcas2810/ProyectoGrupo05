@@ -14,7 +14,6 @@ namespace SIPSProyecto.Permisos
             {
                 filterContext.Result = new RedirectResult("~/Login/Login");
             }
-
             base.OnActionExecuting(filterContext);
         }
     }
