@@ -37,7 +37,19 @@ namespace SIPSProyecto.Controllers
                     {
                         return RedirectToAction("Index", "Usuario");
                     }
-                    return RedirectToAction("Index", "Home");
+                    else if(usuario2.usu_vcTipo == "Coordinador")
+                    {
+                        return RedirectToAction("Index", "Estudiante");
+                    }
+                    else if(usuario2.usu_vcTipo == "Estudiante")
+                    {
+                        return RedirectToAction("Details", "Usuario", new { id = usuario2.usu_iCodigo});
+                    }
+                    else
+                    {
+                        return RedirectToAction("Create", "Incidencia");
+                    }
+                    
                 }
                 else
                 {

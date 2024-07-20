@@ -16,13 +16,15 @@ namespace SIPSProyecto.Controllers
         {
             using (DBModels contexto = new DBModels())
             {
+                int idAsistente = Convert.ToInt32(Session["id"]);
+                AsistenteEmpresa asistente = contexto.AsistenteEmpresa.FirstOrDefault(x => x.ase_iCodigo == idAsistente);
                 if (convenio != null)
                 {
                     return View(convenio);
                 }
                 else
                 {
-                    return View(await contexto.Convenio.ToListAsync());
+                    return View(await contexto.Convenio.Where(x=>x.emp_iCodigo == asistente.emp_iCodigo).ToListAsync());
                 }
             }
         }
