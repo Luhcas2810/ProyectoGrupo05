@@ -20,9 +20,17 @@ namespace SIPSProyecto.Controllers
         }
 
         // GET: Tarea/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            using (DBModels context = new DBModels())
+            {
+                var tarea = await context.Tarea.FirstOrDefaultAsync(x => x.tar_iCodigo == id);
+                if (tarea == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(tarea);
+            }
         }
 
         // GET: Tarea/Create
@@ -63,7 +71,7 @@ namespace SIPSProyecto.Controllers
                     tarea.tar_vcNotaObtenida = "NC";
                     context.Tarea.Add(tarea);
                     context.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Details",tarea.tar_iCodigo);
                 }
             }
             catch

@@ -1,0 +1,42 @@
+﻿@model SIPSProyecto.Models.Tarea
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<div>
+    <h3>@Model.Nombre @Model.Apellido</h3>
+</div>
+
+<hr class="divider">
+<div class="container">
+    <div class="columna1">
+        <div class="form-group">
+            <label for="nombre">Nombres: </label>
+            <input type="text" id="nombre" name="nombre" value="@Model.Nombre" disabled>
+        </div>
+        <div class="form-group">
+            <label for="apellido">Apellidos: </label>
+            <input type="text" id="apellido" name="apellido" value="@Model.Apellido" disabled>
+        </div>
+    </div>
+    <div class="columna2">
+        <div class="form-group">
+            <label for="est_vcCodigo">Tarea: </label>
+            <input type="text" id="tar_vcDescripcion" name="tar_vcDescripcion" value="@Model.tar_vcDescripcion" disabled>
+        </div>
+    </div>
+    <script>
+        function redirectToEdit(id) {
+            window.location.href = '@Url.Action("Edit", "Estudiante")?id=' + id;
+        }
+        function redirectToDelete(id) {
+            window.location.href = '@Url.Action("Delete", "Estudiante")?id=' + id;
+        }
+    </script>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.est_iCodigo }, new { @class = "btn btn-info", @style = "margin-left: 110px; margin-top: 10px; font-size: 18px;" })
+    @Html.ActionLink("Eliminar", "Delete", new { id = Model.est_iCodigo }, new { @class = "btn btn-warning", @style = "margin-left: 10px; margin-top: 10px; font-size: 18px;" })
+</p>

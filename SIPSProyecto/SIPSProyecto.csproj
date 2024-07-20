@@ -296,6 +296,7 @@
     <Content Include="Views\Estudiante\Details.cshtml" />
     <Content Include="Views\Convenio\Index.cshtml" />
     <Content Include="Views\Convenio\Details.cshtml" />
+    <Content Include="Views\Tarea\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
