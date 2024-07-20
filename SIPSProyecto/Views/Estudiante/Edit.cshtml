@@ -1,0 +1,55 @@
+﻿@model SIPSProyecto.Models.Estudiante
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<head>
+    <link href="~/Content/cus1_2styles.css" rel="stylesheet" />
+</head>
+
+<div>
+    <h3>@Model.Nombre @Model.Apellido</h3>
+</div>
+
+<hr class="divider">
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div class="columna1">
+            <div class="form-group">
+                <label for="nombre">Nombres: </label>
+                <input type="text" id="nombre" name="nombre" value="@Model.Nombre" disabled>
+            </div>
+            <div class="form-group">
+                <label for="apellido">Apellidos: </label>
+                <input type="text" id="apellido" name="apellido" value="@Model.Apellido" disabled>
+            </div>
+            <div class="form-group">
+                <label for="escuela">Escuela: </label>
+                <input type="text" id="escuela" name="escuela" value="@Model.EscuelaNombre" disabled>
+            </div>
+        </div>
+        <div class="columna2">
+            <div class="form-group">
+                <label for="est_vcCodigo">Código: </label>
+                <input type="text" id="est_vcCodigo" name="est_vcCodigo" value="@Model.est_vcCodigo">
+            </div>
+            <div class="form-group">
+                <label for="est_vcDocente">Docente: </label>
+                <input type="text" id="est_vcDocente" name="est_vcDocente" value="@Model.est_vcDocente">
+            </div>
+        </div>
+    </div>
+    <button type="submit" style="margin-left: 110px; margin-top: 10px; font-size: 18px;" class="btn btn-info">Guardar</button>
+    @Html.ActionLink("Regresar", "Details", new { id = Model.est_iCodigo }, new { @class = "btn btn-primary", @style= "margin-left: 10px; margin-top: 10px; font-size: 18px;" })
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

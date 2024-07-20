@@ -66,6 +66,22 @@ namespace SIPSProyecto.Models
                 apellido = value;
             }
         }
+        public string escuelanombre;
+        public string EscuelaNombre
+        {
+            get
+            {
+                using(DBModels contexto = new DBModels())
+                {
+                    Escuela escuela = contexto.Escuela.Find(esc_iCodigo);
+                    return escuela.esc_vcNombre;
+                }
+            }
+            set
+            {
+                escuelanombre = value;
+            }
+        }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Competencia> Competencia { get; set; }

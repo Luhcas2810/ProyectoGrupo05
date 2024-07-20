@@ -23,13 +23,22 @@
             <label for="apellido">Apellidos: </label>
             <input type="text" id="apellido" name="apellido" value="@Model.Apellido" disabled>
         </div>
+        <div class="form-group">
+            <label for="escuela">Escuela: </label>
+            <input type="text" id="escuela" name="escuela" value="@Model.EscuelaNombre" disabled>
+        </div>
     </div>
     <div class="columna2">
         <div class="form-group">
             <label for="est_vcCodigo">Código: </label>
             <input type="text" id="est_vcCodigo" name="est_vcCodigo" value="@Model.est_vcCodigo" disabled>
         </div>
+        <div class="form-group">
+            <label for="est_vcDocente">Docente: </label>
+            <input type="text" id="est_vcDocente" name="est_vcDocente" value="@Model.est_vcDocente" disabled>
+        </div>
     </div>
+
     <script>
         function redirectToEdit(id) {
             window.location.href = '@Url.Action("Edit", "Estudiante")?id=' + id;
@@ -40,6 +49,6 @@
     </script>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.usu_iCodigo }, new { @class = "btn btn-info", @style = "margin-left: 110px; margin-top: 10px; font-size: 18px;" })
-    @Html.ActionLink("Eliminar", "Delete", new { id = Model.usu_iCodigo }, new { @class = "btn btn-warning", @style = "margin-left: 10px; margin-top: 10px; font-size: 18px;" })
+    @Html.ActionLink("Editar", "Edit", new { id = Model.est_iCodigo }, new { @class = "btn btn-info", @style = "margin-left: 110px; margin-top: 10px; font-size: 18px;" })
+    @Html.ActionLink("Eliminar", "Delete", new { id = Model.est_iCodigo }, new { @class = "btn btn-warning", @style = "margin-left: 10px; margin-top: 10px; font-size: 18px;" })
 </p>
