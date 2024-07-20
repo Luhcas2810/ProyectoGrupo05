@@ -71,7 +71,7 @@ namespace SIPSProyecto.Models
         {
             get
             {
-                using(DBModels contexto = new DBModels())
+                using (DBModels contexto = new DBModels())
                 {
                     Escuela escuela = contexto.Escuela.Find(esc_iCodigo);
                     return escuela.esc_vcNombre;

@@ -47,6 +47,7 @@
           <Property Name="con_dtFechaInicio" Type="date" />
           <Property Name="con_dtFechaFin" Type="date" />
           <Property Name="con_vcPuesto" Type="varchar" MaxLength="100" />
+          <Property Name="con_vcEstado" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="CoordinadorPracticas">
           <Key>
@@ -633,6 +634,7 @@
           <Property Name="con_dtFechaInicio" Type="DateTime" Precision="0" />
           <Property Name="con_dtFechaFin" Type="DateTime" Precision="0" />
           <Property Name="con_vcPuesto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="con_vcEstado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CoordinadorPracticas" Relationship="Self.FK_Convenio_CoordinadorPracticas" FromRole="Convenio" ToRole="CoordinadorPracticas" />
           <NavigationProperty Name="Empresa" Relationship="Self.FK_Convenio_Empresa" FromRole="Convenio" ToRole="Empresa" />
           <NavigationProperty Name="Estudiante" Relationship="Self.FK_Estudiante_Convenio" FromRole="Convenio" ToRole="Estudiante" />
@@ -1257,6 +1259,7 @@
                 <ScalarProperty Name="con_dtFechaInicio" ColumnName="con_dtFechaInicio" />
                 <ScalarProperty Name="con_dtFechaFin" ColumnName="con_dtFechaFin" />
                 <ScalarProperty Name="con_vcPuesto" ColumnName="con_vcPuesto" />
+                <ScalarProperty Name="con_vcEstado" ColumnName="con_vcEstado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
