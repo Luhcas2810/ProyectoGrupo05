@@ -1,0 +1,94 @@
+﻿@model SIPSProyecto.Models.Convenio
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<head>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</head>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Convenio</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.con_vcPuesto, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.con_vcPuesto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.con_vcPuesto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.est_iCodigo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.est_iCodigo, (SelectList)ViewBag.Estudiantes, "Seleccione una estudiante", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.est_iCodigo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.emp_iCodigo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.emp_iCodigo, (SelectList)ViewBag.Empresas, "Seleccione una empresa", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.emp_iCodigo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="con_dtFechaInicio">Fecha inicio:</label>
+            @Html.TextBoxFor(model => model.con_dtFechaInicio, new { @id = "con_dtFechaInicio" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.con_dtFechaFin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.con_dtFechaFin, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.con_dtFechaFin, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.con_vcEstado, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.con_vcEstado, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.con_vcEstado, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+    $(function () {
+        console.log("XD");
+    $("con_dtFechaInicio").datepicker({
+                dateFormat: "dd/mm/yy"
+            });
+    $("con_dtFechaFin").datepicker({
+                dateFormat: "dd/mm/yy"
+    });
+        console.log("XD");
+    });
+    </script>
+}

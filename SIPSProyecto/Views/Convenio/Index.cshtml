@@ -7,6 +7,18 @@
     <link href="~/Content/cus2styles.css" rel="stylesheet" />
 </head>
 <h2>Mantener Informacion del Convenio</h2>
+@using (Html.BeginForm("Search", "Convenio"))
+{
+<div class="form-group">
+    @Html.TextBox("nombre_con", null, new { @class = "TextBox", @placeholder = "Ingrese convenio" })
+    @Html.TextBox("nombre_emp", null, new { @class = "TextBox", @placeholder = "Ingrese empresa" })
+    <button type="submit"></button>
+
+    <div>
+        @Html.ActionLink("Agregar convenio", "Create", "Convenio", new { }, new { @class = "btn btn-success", @style = "margin-left: 700px; margin-top: 10px; font-size: 15px;" })
+    </div>
+</div>
+}
 
 <hr class="divider">
 <table class="convenio-table">
@@ -29,28 +41,28 @@
 
         @foreach (var item in Model)
         {
-    <tr onclick="redirectTo('@Url.Action("Details", "Convenio", new { id = item.est_iCodigo })')">
-        <td>
-            @Html.DisplayFor(modelItem => item.con_vcPuesto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.emp_iCodigo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.con_dtFechaInicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.con_dtFechaFin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.est_iCodigo)
-        </td>
-    </tr>
+        <tr onclick="redirectTo('@Url.Action("Details", "Convenio", new { id = item.est_iCodigo })')">
+            <td>
+                @Html.DisplayFor(modelItem => item.con_vcPuesto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.emp_iCodigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.con_dtFechaInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.con_dtFechaFin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.est_iCodigo)
+            </td>
+        </tr>
     }
 
-</table>
-<script>
-    function redirectTo(url) {
-        window.location.href = url;
-    }
-</script>
+    </table>
+    <script>
+        function redirectTo(url) {
+            window.location.href = url;
+        }
+    </script>

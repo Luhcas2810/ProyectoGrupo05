@@ -298,6 +298,7 @@
     <Content Include="Views\Convenio\Details.cshtml" />
     <Content Include="Views\Tarea\Details.cshtml" />
     <Content Include="Views\Estudiante\Edit.cshtml" />
+    <Content Include="Views\Convenio\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

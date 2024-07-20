@@ -42,9 +42,29 @@ namespace SIPSProyecto.Controllers
         }
 
         // GET: Convenio/Create
-        public ActionResult Create()
+        public ActionResult Create(Convenio convenio)
         {
-            return View();
+            if(convenio == null)
+            {
+                return View();
+            }
+            using(DBModels contexto = new DBModels())
+            {
+                var empresas = contexto.Empresa.Select(e => new
+                {
+                    emp_iCodigo = e.emp_iCodigo,
+                    emp_vcNombre = e.emp_vcNombre
+                }).ToList();
+                ViewBag.Empresas = new SelectList(empresas, "emp_iCodigo", "emp_vcNombre");
+                var estuiantes = contexto.Estudiante.Select(e => new
+                {
+                    est_iCodigo = e.est_iCodigo,
+                    nombreestudiante = e.Usuario.usu_vcNombres + e.Usuario.usu_vcApellidos
+                }).ToList();
+                ViewBag.Empresas = new SelectList(empresas, "emp_iCodigo", "emp_vcNombre");
+                ViewBag.Estudiantes = new SelectList(estuiantes, "est_iCodigo", "nombreestudiante");
+                return View(convenio);
+            }
         }
 
         // POST: Convenio/Create
@@ -104,6 +124,42 @@ namespace SIPSProyecto.Controllers
             catch
             {
                 return View();
+            }
+        }
+        public async Task<ActionResult> Search(string nombre_con, string nombre_emp)
+        {
+            if (String.IsNullOrWhiteSpace(nombre_con) && String.IsNullOrWhiteSpace(nombre_emp))
+            {
+                return RedirectToAction("Index");
+            }
+            List<Convenio> ListaConvenio = new List<Convenio>();
+            try
+            {
+                using (DBModels contexto = new DBModels())
+                {
+                    var query = from c in contexto.Convenio
+                                join e in contexto.Empresa on c.emp_iCodigo equals e.emp_iCodigo
+                                select new { e, c };
+                    if (!string.IsNullOrWhiteSpace(nombre_con))
+                    {
+                        query = query.Where(f => f.c.con_vcPuesto.Contains(nombre_con));
+                    }
+                    if (!string.IsNullOrWhiteSpace(nombre_emp))
+                    {
+                        query = query.Where(f => f.e.emp_vcNombre.Contains(nombre_emp));
+                    }
+                    ListaConvenio = await query.Select(f => f.c).ToListAsync();
+                    if (ListaConvenio.Count == 0)
+                    {
+                        TempData["AlertMessage"] = "No existen esos datos";
+                        return RedirectToAction("Index");
+                    }
+                }
+                return View("Index", ListaConvenio);
+            }
+            catch
+            {
+                return RedirectToAction("Index");
             }
         }
     }
