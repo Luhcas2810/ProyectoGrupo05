@@ -71,7 +71,7 @@ namespace SIPSProyecto.Controllers
                     tarea.tar_vcNotaObtenida = "NC";
                     context.Tarea.Add(tarea);
                     context.SaveChanges();
-                    return RedirectToAction("Details",tarea.tar_iCodigo);
+                    return RedirectToAction("Details", new { id = tarea.tar_iCodigo});
                 }
             }
             catch
