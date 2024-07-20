@@ -32,6 +32,7 @@ namespace SIPSProyecto.Models
         public Nullable<int> usu_iCodigo { get; set; }
         public Nullable<int> esc_iCodigo { get; set; }
         public string est_vcCodigo { get; set; }
+        public string est_vcDocente { get; set; }
         public string nombre;
         public string Nombre
         {
@@ -65,7 +66,6 @@ namespace SIPSProyecto.Models
                 apellido = value;
             }
         }
-
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Competencia> Competencia { get; set; }

@@ -27,7 +27,6 @@ namespace SIPSProyecto.Models
         public Nullable<System.DateTime> con_dtFechaInicio { get; set; }
         public Nullable<System.DateTime> con_dtFechaFin { get; set; }
         public string con_vcPuesto { get; set; }
-
         public string nombreEmpresa;
         public string NombreEmpresa
         {

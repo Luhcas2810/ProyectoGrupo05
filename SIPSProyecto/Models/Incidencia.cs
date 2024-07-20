@@ -26,7 +26,7 @@ namespace SIPSProyecto.Models
         {
             get
             {
-                using(DBModels contexto = new DBModels())
+                using (DBModels contexto = new DBModels())
                 {
                     Administrador administrador = contexto.Administrador.Find(adm_iCodigo);
                     Usuario usuario = contexto.Usuario.Find(administrador.usu_iCodigo);
@@ -38,7 +38,7 @@ namespace SIPSProyecto.Models
                 nombre = value;
             }
         }
-    
+
         public virtual Administrador Administrador { get; set; }
         public virtual Usuario Usuario { get; set; }
     }

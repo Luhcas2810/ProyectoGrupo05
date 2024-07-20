@@ -86,6 +86,7 @@
           <Property Name="usu_iCodigo" Type="int" />
           <Property Name="esc_iCodigo" Type="int" />
           <Property Name="est_vcCodigo" Type="varchar" MaxLength="45" />
+          <Property Name="est_vcDocente" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Evaluacion">
           <Key>
@@ -683,6 +684,7 @@
           <Property Name="usu_iCodigo" Type="Int32" />
           <Property Name="esc_iCodigo" Type="Int32" />
           <Property Name="est_vcCodigo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="est_vcDocente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Competencia" Relationship="Self.FK_Competencia_Estudiante" FromRole="Estudiante" ToRole="Competencia" />
           <NavigationProperty Name="ContribucionEquipo" Relationship="Self.FK_ContribucionEquipo_Estudiante" FromRole="Estudiante" ToRole="ContribucionEquipo" />
           <NavigationProperty Name="Convenio" Relationship="Self.FK_Estudiante_Convenio" FromRole="Estudiante" ToRole="Convenio" />
@@ -1299,6 +1301,7 @@
                 <ScalarProperty Name="usu_iCodigo" ColumnName="usu_iCodigo" />
                 <ScalarProperty Name="esc_iCodigo" ColumnName="esc_iCodigo" />
                 <ScalarProperty Name="est_vcCodigo" ColumnName="est_vcCodigo" />
+                <ScalarProperty Name="est_vcDocente" ColumnName="est_vcDocente" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -43,7 +43,7 @@
 
     @foreach (var item in Model)
     {
-        <tr onclick="redirectTo('@Url.Action("Details", "Estudiante", new { id = item.esc_iCodigo })')">
+        <tr onclick="redirectTo('@Url.Action("Details", "Estudiante", new { id = item.est_iCodigo })')">
             <td>
                 @Html.DisplayFor(modelItem => item.est_vcCodigo)
             </td>

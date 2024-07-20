@@ -69,9 +69,16 @@ namespace SIPSProyecto.Controllers
                     }).ToList();
                     ViewBag.Estudiantes = new SelectList(estudiantes, "est_iCodigo", "est_vcCodigo");
                     tarea.tar_vcNotaObtenida = "NC";
-                    context.Tarea.Add(tarea);
-                    context.SaveChanges();
-                    return RedirectToAction("Details", new { id = tarea.tar_iCodigo});
+                    Estudiante estudiante = context.Estudiante.Where(x => x.est_iCodigo == tarea.est_iCodigo).FirstOrDefault();
+                    List<Tarea> tareas = context.Tarea.Where(x => x.est_iCodigo == estudiante.est_iCodigo).ToList();
+                    if(tareas.Count < 3)
+                    {
+                        context.Tarea.Add(tarea);
+                        context.SaveChanges();
+                        return RedirectToAction("Details", new { id = tarea.tar_iCodigo });
+                    }
+                    TempData["AlertMessage"] = "Ya no puede tener más tareas";
+                    return RedirectToAction("Create");
                 }
             }
             catch
