@@ -25,8 +25,9 @@ namespace SIPSProyecto.Controllers
                 Usuario usuario2 = context.Usuario.FirstOrDefault(x => x.usu_vcCorreo == usuario.usu_vcCorreo);
                 if (usuario2.usu_vcContrasena == usuario.usu_vcContrasena)
                 {
-                    Session["usuario"] = usuario;
-                    Session["tipo"] = usuario.usu_vcTipo;
+                    Session["usuario"] = usuario2;
+                    Session["tipo"] = usuario2.usu_vcTipo;
+                    Session["id"] = usuario2.usu_iCodigo;
                     return RedirectToAction("Index", "Home");
                 }
                 else

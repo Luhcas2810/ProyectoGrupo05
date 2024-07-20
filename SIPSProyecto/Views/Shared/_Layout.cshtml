@@ -15,11 +15,32 @@
     <div class="sidebar">
         <h2>SIPS</h2>
         <div class="tipo_user">
-            <p>@(Session["tipo"] != null ? Session["tipo"].ToString() : "Usuario")</p>
+            @if (Session["tipo"] != null)
+            {
+        <p>@Session["tipo"]</p>}
         </div>
         <ul>
-            <li><a href="~/Usuario/Index">Usuarios del sistema</a></li>
-            <li><a href="~/Incidencia/Index">Incidencias del sitema</a></li>
+            @if (Session["tipo"].ToString() == "Administrador")
+            {
+                <li><a href="~/Usuario/Details/@Session["id"]">Perfil</a></li>
+                <li><a href="~/Usuario/Index">Usuarios del sistema</a></li>
+                <li><a href="~/Incidencia/Index">Incidencias del sitema</a></li>
+            }
+            @if (Session["tipo"].ToString() == "Coordinador")
+            {
+                <li><a href="~/Estudiante/Index">Mantener información del alumno</a></li>
+                <li><a href="~/Convenio/Index">Mantener información del convenio</a></li>
+            }
+            @if (Session["tipo"].ToString() == "Asistente de empresa")
+            {
+                <li><a href="~/Convenio/Index">Consultar datos del convenio</a></li>
+                <li><a href="~/Incidencia/Index">Incidencias del sitema</a></li>
+            }
+            @if (Session["tipo"].ToString() == "Estudiante")
+            {
+                <li><a href="~/Convenio/Index">Consultar datos del convenio</a></li>
+                <li><a href="~/Incidencia/Index">Incidencias del sitema</a></li>
+            }
         </ul>
     </div>
     <div class="content">
